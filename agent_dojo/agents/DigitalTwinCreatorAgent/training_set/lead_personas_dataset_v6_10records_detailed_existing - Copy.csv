@@ -1,0 +1,556 @@
+persona,data,existing_digital_twin,digital_twin
+61-year-old near-retiree,"{""user_id"": ""U019"", ""session_id"": ""S019"", ""page_views"": [{""url"": ""/home?lang=fr"", ""timestamp"": ""2025-07-10T10:00:08Z""}, {""url"": ""/products/annuity/guaranteed-income?lang=fr"", ""timestamp"": ""2025-07-10T10:02:01Z""}, {""url"": ""/tools/retirement-income-planner?age=61&start_age=63"", ""timestamp"": ""2025-07-10T10:04:07Z""}], ""actions"": [{""action"": ""schedule_callback"", ""timestamp"": ""2025-07-10T10:04:11Z""}], ""referrer"": ""/generator"", ""device"": ""desktop"", ""location"": ""Paris, France"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Safari"", ""os"": ""macOS 14"", ""device_type"": ""desktop"", ""screen"": ""2560x1440"", ""viewport"": ""1680x987"", ""language"": ""fr-FR"", ""timezone"": ""UTC"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:08Z"", ""session_end"": ""2025-07-10T10:04:11Z"", ""session_duration_sec"": 243, ""pages_count"": 3}}","### Existing Digital Twin: Unknown (Lead ID: U019)
+
+**Persona Summary:**  
+61-year-old retired or soon-to-retire professional residing in Paris. Previously engaged with general annuity education.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 61  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Retired or soon-to-retire professional  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: French (primary)
+
+**Financial Information:**  
+- Annual Income: €100,000–€160,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates exploration of general annuity education
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (macOS 14, Safari)  
+- Language preference: French for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior (prior): Visited 2 page(s), last page `/products/annuity/overview`; actions taken: [].
+
+**Engagement & Opportunities (prior):**  
+- Stage: Research  
+- Short-term upsell opportunities: Guidance on general annuity education and adjacent rider options  
+- Messaging preferences: Clear comparisons and simple next steps  
+- Recommended actions (prior): Nurture with targeted education and invite to start/continue a quote","### Digital Twin Profile: Unknown (Lead ID: U019)
+
+**Persona Summary:**  
+61-year-old retired or soon-to-retire professional residing in Paris. Actively exploring annuities and retirement income products.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 61  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Retired or soon-to-retire professional  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: French (primary)
+
+**Financial Information:**  
+- Annual Income: €100,000–€160,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of annuities and retirement income products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (macOS 14, Safari)  
+- Language preference: French for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 3 page(s), last page `/tools/retirement-income-planner?age=61&start_age=63`; actions taken: ['schedule_callback'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Customized annuity riders and retirement income planning services  
+- Messaging preferences: Clear, concise information in English with personalized follow-up  
+- Next best actions: TBD based on current session context"
+35-year-old techie,"{""user_id"": ""U001"", ""session_id"": ""S001"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T10:00:08Z""}, {""url"": ""/products/term-life?sort=popular&coverage_min=500000"", ""timestamp"": ""2025-07-10T10:01:10Z""}, {""url"": ""/tools/quick-quote?age=35&smoker=no&sum_assured=500000&term=20"", ""timestamp"": ""2025-07-10T10:02:35Z""}, {""url"": ""/compare?products=term_basic,term_elite"", ""timestamp"": ""2025-07-10T10:03:56Z""}], ""actions"": [{""action"": ""quote_started"", ""timestamp"": ""2025-07-10T10:02:39Z""}, {""action"": ""save_quote"", ""timestamp"": ""2025-07-10T10:04:21Z""}], ""referrer"": ""/generator"", ""device"": ""desktop"", ""location"": ""Bengaluru, India"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Chrome"", ""os"": ""Linux"", ""device_type"": ""desktop"", ""screen"": ""1920x1080"", ""viewport"": ""1536x824"", ""language"": ""en-IN"", ""timezone"": ""UTC"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:08Z"", ""session_end"": ""2025-07-10T10:04:21Z"", ""session_duration_sec"": 253, ""pages_count"": 4}}","### Existing Digital Twin: Unknown (Lead ID: U001)
+
+**Persona Summary:**  
+35-year-old software engineer residing in Bengaluru. Previously engaged with basic term life comparisons.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 35  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Software Engineer  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: ₹90,000–₹140,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates exploration of basic term life comparisons
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Linux, Chrome)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior (prior): Visited 2 page(s), last page `/products/term-life?sort=popular`; actions taken: ['email_capture'].
+
+**Engagement & Opportunities (prior):**  
+- Stage: Awareness → Interest  
+- Short-term upsell opportunities: Guidance on basic term life comparisons and adjacent rider options  
+- Messaging preferences: Clear comparisons and simple next steps  
+- Recommended actions (prior): Nurture with targeted education and invite to start/continue a quote","### Digital Twin Profile: Unknown (Lead ID: U001)
+
+**Persona Summary:**  
+35-year-old software engineer residing in Bengaluru. Actively exploring term life insurance options.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 35  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Software Engineer  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: ₹90,000–₹140,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of term life insurance options
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Linux, Chrome)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/compare?products=term_basic,term_elite`; actions taken: ['quote_started', 'save_quote'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Comparison of starter vs. elite plans  
+- Messaging preferences: Simple next steps in English  
+- Next best actions: TBD based on current session context"
+45-year-old small business owner,"{""user_id"": ""U002"", ""session_id"": ""S002"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T10:00:01Z""}, {""url"": ""/products/keyman-insurance"", ""timestamp"": ""2025-07-10T10:01:26Z""}, {""url"": ""/products/term-life?add_on=disability"", ""timestamp"": ""2025-07-10T10:03:06Z""}, {""url"": ""/tools/premium-calculator?employees=8&coverage=2000000"", ""timestamp"": ""2025-07-10T10:04:21Z""}], ""actions"": [{""action"": ""schedule_callback"", ""timestamp"": ""2025-07-10T10:05:00Z""}], ""referrer"": ""/generator"", ""device"": ""laptop"", ""location"": ""San Jose, USA"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Edge"", ""os"": ""Windows 11"", ""device_type"": ""laptop"", ""screen"": ""1920x1080"", ""viewport"": ""1512x915"", ""language"": ""en-US"", ""timezone"": ""UTC"", ""dnt"": true, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:01Z"", ""session_end"": ""2025-07-10T10:05:00Z"", ""session_duration_sec"": 299, ""pages_count"": 4}}","### Existing Digital Twin: Unknown (Lead ID: U002)
+
+**Persona Summary:**  
+45-year-old small business owner / founder residing in San Jose. Previously engaged with personal term coverage.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 45  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Small Business Owner / Founder  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: $120,000–$200,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates exploration of personal term coverage
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (Windows 11, Edge)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior (prior): Visited 2 page(s), last page `/products/term-life`; actions taken: [].
+
+**Engagement & Opportunities (prior):**  
+- Stage: Interest  
+- Short-term upsell opportunities: Guidance on personal term coverage and adjacent rider options  
+- Messaging preferences: Clear comparisons and simple next steps  
+- Recommended actions (prior): Nurture with targeted education and invite to start/continue a quote","### Digital Twin Profile: Unknown (Lead ID: U002)
+
+**Persona Summary:**  
+45-year-old small business owner / founder residing in San Jose. Actively exploring term life insurance options.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 45  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Small Business Owner / Founder  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: $120,000–$200,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of term life insurance options
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (Windows 11, Edge)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/premium-calculator?employees=8&coverage=2000000`; actions taken: ['schedule_callback'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Comparison of starter vs. elite plans  
+- Messaging preferences: Simple next steps in English  
+- Next best actions: TBD based on current session context"
+42-year-old nurse,"{""user_id"": ""U012"", ""session_id"": ""S012"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T10:00:01Z""}, {""url"": ""/products/critical-illness"", ""timestamp"": ""2025-07-10T10:01:43Z""}, {""url"": ""/riders/hospital_cash"", ""timestamp"": ""2025-07-10T10:03:16Z""}, {""url"": ""/tools/quick-quote?age=42&smoker=no&sum_assured=300000&term=20"", ""timestamp"": ""2025-07-10T10:04:21Z""}], ""actions"": [{""action"": ""quote_started"", ""timestamp"": ""2025-07-10T10:04:28Z""}, {""action"": ""save_quote"", ""timestamp"": ""2025-07-10T10:05:00Z""}], ""referrer"": ""/generator"", ""device"": ""laptop"", ""location"": ""Chicago, USA"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Edge"", ""os"": ""Windows 11"", ""device_type"": ""laptop"", ""screen"": ""1920x1080"", ""viewport"": ""1512x915"", ""language"": ""en-US"", ""timezone"": ""UTC"", ""dnt"": true, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:01Z"", ""session_end"": ""2025-07-10T10:05:00Z"", ""session_duration_sec"": 299, ""pages_count"": 4}}","### Existing Digital Twin: Unknown (Lead ID: U012)
+
+**Persona Summary:**  
+42-year-old nurse / healthcare professional residing in Chicago. Previously engaged with critical illness basics.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 42  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Nurse / Healthcare Professional  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: $55,000–$95,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates exploration of critical illness basics
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (Windows 11, Edge)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior (prior): Visited 2 page(s), last page `/articles/ci-overview`; actions taken: ['email_capture'].
+
+**Engagement & Opportunities (prior):**  
+- Stage: Interest  
+- Short-term upsell opportunities: Guidance on critical illness basics and adjacent rider options  
+- Messaging preferences: Clear comparisons and simple next steps  
+- Recommended actions (prior): Nurture with targeted education and invite to start/continue a quote","### Digital Twin Profile: Unknown (Lead ID: U012)
+
+**Persona Summary:**  
+42-year-old nurse / healthcare professional residing in Chicago. Actively exploring critical illness coverage and related riders.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 42  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Nurse / Healthcare Professional  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: $55,000–$95,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of critical illness coverage and related riders
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (Windows 11, Edge)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/quick-quote?age=42&smoker=no&sum_assured=300000&term=20`; actions taken: ['quote_started', 'save_quote'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Hospital cash rider and income protector rider  
+- Messaging preferences: Benefit clarity with simple examples in English  
+- Next best actions: TBD based on current session context"
+33-year-old new parent,"{""user_id"": ""U005"", ""session_id"": ""S005"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T10:00:00Z""}, {""url"": ""/life-events/new-baby-checklist"", ""timestamp"": ""2025-07-10T10:01:18Z""}, {""url"": ""/products/term-life?beneficiaries=spouse,child"", ""timestamp"": ""2025-07-10T10:02:38Z""}, {""url"": ""/tools/coverage-planner?dependents=1&education_goal=yes"", ""timestamp"": ""2025-07-10T10:03:41Z""}], ""actions"": [{""action"": ""quote_started"", ""timestamp"": ""2025-07-10T10:03:51Z""}], ""referrer"": ""/generator"", ""device"": ""phone"", ""location"": ""Sydney, Australia"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Mobile Safari"", ""os"": ""iOS 17"", ""device_type"": ""phone"", ""screen"": ""1170x2532"", ""viewport"": ""414x896"", ""language"": ""en-AU"", ""timezone"": ""UTC"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:00Z"", ""session_end"": ""2025-07-10T10:03:51Z"", ""session_duration_sec"": 231, ""pages_count"": 4}}",,"### Digital Twin Profile: Unknown (Lead ID: U005)
+
+**Persona Summary:**  
+33-year-old professional (new parent) residing in Sydney. Actively exploring term life insurance options.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 33  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional (new parent)  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: A$70,000–A$120,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of term life insurance options
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Phone (iOS 17, Mobile Safari)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/coverage-planner?dependents=1&education_goal=yes`; actions taken: ['quote_started'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Comparison of starter vs. elite plans  
+- Messaging preferences: Simple next steps in English  
+- Next best actions: TBD based on current session context"
+28-year-old digital nomad,"{""user_id"": ""U016"", ""session_id"": ""S016"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T10:00:03Z""}, {""url"": ""/riders/global-expat-coverage"", ""timestamp"": ""2025-07-10T10:02:03Z""}, {""url"": ""/products/term-life?add_on=international_assist"", ""timestamp"": ""2025-07-10T10:03:40Z""}], ""actions"": [{""action"": ""email_capture"", ""timestamp"": ""2025-07-10T10:03:55Z""}], ""referrer"": ""/generator"", ""device"": ""laptop"", ""location"": ""Bali, Indonesia"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Chrome"", ""os"": ""macOS 13"", ""device_type"": ""laptop"", ""screen"": ""2560x1600"", ""viewport"": ""1512x982"", ""language"": ""en-ID"", ""timezone"": ""UTC"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:03Z"", ""session_end"": ""2025-07-10T10:03:55Z"", ""session_duration_sec"": 232, ""pages_count"": 3}}",,"### Digital Twin Profile: Unknown (Lead ID: U016)
+
+**Persona Summary:**  
+28-year-old remote professional / digital nomad residing in Bali. Actively exploring term coverage with international/travel riders.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 28  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Remote Professional / Digital Nomad  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: Rp40,000–Rp85,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of term coverage with international/travel riders
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (macOS 13, Chrome)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 3 page(s), last page `/products/term-life?add_on=international_assist`; actions taken: ['email_capture'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Global assistance and accidental death rider  
+- Messaging preferences: Global exclusions and portability explained in English  
+- Next best actions: TBD based on current session context"
+31-year-old fitness enthusiast,"{""user_id"": ""U007"", ""session_id"": ""S007"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T10:00:03Z""}, {""url"": ""/riders/healthy-lifestyle-discount"", ""timestamp"": ""2025-07-10T10:01:06Z""}, {""url"": ""/tools/wearable-integration?brand=fitband"", ""timestamp"": ""2025-07-10T10:02:27Z""}, {""url"": ""/products/term-life?add_on=wellness_points"", ""timestamp"": ""2025-07-10T10:03:35Z""}], ""actions"": [{""action"": ""email_capture"", ""timestamp"": ""2025-07-10T10:03:44Z""}], ""referrer"": ""/generator"", ""device"": ""phone"", ""location"": ""Vancouver, Canada"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Mobile Safari"", ""os"": ""iOS 17"", ""device_type"": ""phone"", ""screen"": ""1170x2532"", ""viewport"": ""414x896"", ""language"": ""en-CA"", ""timezone"": ""UTC"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:03Z"", ""session_end"": ""2025-07-10T10:03:44Z"", ""session_duration_sec"": 221, ""pages_count"": 4}}",,"### Digital Twin Profile: Unknown (Lead ID: U007)
+
+**Persona Summary:**  
+31-year-old professional (health-conscious) residing in Vancouver. Actively exploring term coverage with wellness/healthy-lifestyle incentives.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 31  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional (health-conscious)  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: C$60,000–C$110,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of term coverage with wellness/healthy-lifestyle incentives
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Phone (iOS 17, Mobile Safari)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/products/term-life?add_on=wellness_points`; actions taken: ['email_capture'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Wearable integrations and wellness discounts  
+- Messaging preferences: Perks overview and setup steps in English  
+- Next best actions: TBD based on current session context"
+40-year-old frequent traveler,"{""user_id"": ""U010"", ""session_id"": ""S010"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T10:00:00Z""}, {""url"": ""/products/term-life?add_on=accidental_death"", ""timestamp"": ""2025-07-10T10:02:01Z""}, {""url"": ""/riders/travel-coverage?region=global"", ""timestamp"": ""2025-07-10T10:03:38Z""}, {""url"": ""/tools/beneficiary-planner?beneficiaries=2"", ""timestamp"": ""2025-07-10T10:04:53Z""}], ""actions"": [{""action"": ""start_chat"", ""timestamp"": ""2025-07-10T10:05:01Z""}], ""referrer"": ""/generator"", ""device"": ""desktop"", ""location"": ""Dubai, UAE"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Firefox"", ""os"": ""Windows 11"", ""device_type"": ""desktop"", ""screen"": ""1920x1080"", ""viewport"": ""1536x824"", ""language"": ""en-AE"", ""timezone"": ""UTC"", ""dnt"": true, ""ad_blocker"": true, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:00Z"", ""session_end"": ""2025-07-10T10:05:01Z"", ""session_duration_sec"": 301, ""pages_count"": 4}}",,"### Digital Twin Profile: Unknown (Lead ID: U010)
+
+**Persona Summary:**  
+40-year-old consultant / frequent traveler residing in Dubai. Actively exploring term coverage with international/travel riders.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 40  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Consultant / Frequent Traveler  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: AED80,000–AED130,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of term coverage with international/travel riders
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Windows 11, Firefox)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/beneficiary-planner?beneficiaries=2`; actions taken: ['start_chat'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Global assistance and accidental death rider  
+- Messaging preferences: Global exclusions and portability explained in English  
+- Next best actions: TBD based on current session context"
+47-year-old homeowner,"{""user_id"": ""U006"", ""session_id"": ""S006"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T10:00:01Z""}, {""url"": ""/products/mortgage-protection"", ""timestamp"": ""2025-07-10T10:01:33Z""}, {""url"": ""/tools/premium-calculator?coverage=remaining_mortgage&term=15"", ""timestamp"": ""2025-07-10T10:03:00Z""}, {""url"": ""/articles/how-mortgage-protection-works"", ""timestamp"": ""2025-07-10T10:04:21Z""}], ""actions"": [{""action"": ""save_quote"", ""timestamp"": ""2025-07-10T10:04:46Z""}], ""referrer"": ""/generator"", ""device"": ""desktop"", ""location"": ""Manchester, UK"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Chrome"", ""os"": ""Windows 10"", ""device_type"": ""desktop"", ""screen"": ""1920x1080"", ""viewport"": ""1536x824"", ""language"": ""en-GB"", ""timezone"": ""UTC"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:01Z"", ""session_end"": ""2025-07-10T10:04:46Z"", ""session_duration_sec"": 285, ""pages_count"": 4}}","### Existing Digital Twin: Unknown (Lead ID: U006)
+
+**Persona Summary:**  
+47-year-old professional/homeowner residing in Manchester. Previously engaged with mortgage protection overview.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 47  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional/Homeowner  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: £80,000–£120,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates exploration of mortgage protection overview
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Windows 10, Chrome)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior (prior): Visited 2 page(s), last page `/products/mortgage-protection`; actions taken: [].
+
+**Engagement & Opportunities (prior):**  
+- Stage: Awareness → Interest  
+- Short-term upsell opportunities: Guidance on mortgage protection overview and adjacent rider options  
+- Messaging preferences: Clear comparisons and simple next steps  
+- Recommended actions (prior): Nurture with targeted education and invite to start/continue a quote","### Digital Twin Profile: Unknown (Lead ID: U006)
+
+**Persona Summary:**  
+47-year-old professional/homeowner residing in Manchester. Actively exploring mortgage protection life insurance.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 47  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional/Homeowner  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: £80,000–£120,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of mortgage protection life insurance
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Windows 10, Chrome)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/articles/how-mortgage-protection-works`; actions taken: ['save_quote'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Term length matching mortgage and waiver of premium rider  
+- Messaging preferences: Coverage-to-premium comparisons in English  
+- Next best actions: TBD based on current session context"
+26-year-old first-jobber,"{""user_id"": ""U009"", ""session_id"": ""S009"", ""page_views"": [{""url"": ""/home?utm=onboarding"", ""timestamp"": ""2025-07-10T10:00:02Z""}, {""url"": ""/articles/insurance-basics"", ""timestamp"": ""2025-07-10T10:01:28Z""}, {""url"": ""/products/term-life?sort=starter"", ""timestamp"": ""2025-07-10T10:02:45Z""}, {""url"": ""/tools/quick-quote?age=26&smoker=no&sum_assured=100000&term=10"", ""timestamp"": ""2025-07-10T10:03:51Z""}], ""actions"": [{""action"": ""quote_started"", ""timestamp"": ""2025-07-10T10:03:59Z""}], ""referrer"": ""/generator"", ""device"": ""laptop"", ""location"": ""Singapore, Singapore"", ""metadata"": {""user_agent"": ""Mozilla/5.0"", ""browser"": ""Chrome"", ""os"": ""macOS 14"", ""device_type"": ""laptop"", ""screen"": ""2560x1600"", ""viewport"": ""1512x982"", ""language"": ""en-SG"", ""timezone"": ""UTC"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""test"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""dt_examples_v6"", ""session_start"": ""2025-07-10T10:00:02Z"", ""session_end"": ""2025-07-10T10:03:59Z"", ""session_duration_sec"": 237, ""pages_count"": 4}}",,"### Digital Twin Profile: Unknown (Lead ID: U009)
+
+**Persona Summary:**  
+26-year-old entry-level professional residing in Singapore. Actively exploring term life insurance options.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 26  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Entry-level Professional  
+- Education Level: Unknown  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: S$30,000–S$55,000  
+- Credit Score Range / Behavior: Unknown  
+- Assets: Moderate savings and investments  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of term life insurance options
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (macOS 14, Chrome)  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/quick-quote?age=26&smoker=no&sum_assured=100000&term=10`; actions taken: ['quote_started'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Comparison of starter vs. elite plans  
+- Messaging preferences: Simple next steps in English  
+- Next best actions: TBD based on current session context"

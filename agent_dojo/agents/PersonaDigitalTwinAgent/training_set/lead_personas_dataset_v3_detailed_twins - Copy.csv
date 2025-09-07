@@ -1,0 +1,761 @@
+persona,data,digital_twin
+35-year-old techie,"{""user_id"": ""U001"", ""session_id"": ""S001"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:05Z""}, {""url"": ""/products/term-life?sort=popular&coverage_min=500000"", ""timestamp"": ""2025-07-10T08:31:17Z""}, {""url"": ""/tools/quick-quote?age=35&smoker=no&sum_assured=500000&term=20"", ""timestamp"": ""2025-07-10T08:32:36Z""}, {""url"": ""/articles/api-integration-security-for-insurance"", ""timestamp"": ""2025-07-10T08:33:50Z""}, {""url"": ""/compare?products=term_basic,term_elite"", ""timestamp"": ""2025-07-10T08:35:00Z""}], ""actions"": [{""action"": ""quote_started"", ""timestamp"": ""2025-07-10T08:32:36Z""}, {""action"": ""save_quote"", ""timestamp"": ""2025-07-10T08:35:38Z""}], ""referrer"": ""/hackernews/tech_readers_term"", ""device"": ""desktop/linux"", ""location"": ""Bengaluru, India"", ""metadata"": {""user_agent"": ""Linux Chrome"", ""browser"": ""Chrome"", ""os"": ""Linux"", ""device_type"": ""desktop"", ""screen"": ""1920x1080"", ""viewport"": ""1536x824"", ""language"": ""en-IN"", ""timezone"": ""Asia/Kolkata"", ""dnt"": false, ""ad_blocker"": true, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""hackernews"", ""utm_medium"": ""referral"", ""utm_campaign"": ""tech_readers_term"", ""utm_content"": ""sidebar_banner"", ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""news.ycombinator.com"", ""referrer_path"": ""/item?id=38291"", ""ip_country"": ""India"", ""geo_city"": ""Bengaluru"", ""session_start"": ""2025-07-10T08:30:05Z"", ""session_end"": ""2025-07-10T08:35:38Z"", ""session_duration_sec"": 333, ""pages_count"": 5, ""tracking_id"": ""trk_2d08a742f8"", ""device_fingerprint"": ""dfp_fb65379415""}}","### Digital Twin Profile: Unknown (Lead ID: U001)
+
+**Persona Summary:**  
+35-year-old software engineer residing in Bengaluru. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 35  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Software Engineer  
+- Education Level: Bachelor’s Degree  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: ₹90,000–₹140,000  
+- Credit Score Range / Behavior: Not available / varies by country  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Linux (Chrome))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 5 page(s), last page `/compare?products=term_basic,term_elite`; actions taken: ['quote_started', 'save_quote'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Send saved-quote resume link with KYC checklist
+"
+45-year-old small business owner,"{""user_id"": ""U002"", ""session_id"": ""S002"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:01Z""}, {""url"": ""/products/keyman-insurance"", ""timestamp"": ""2025-07-10T08:31:35Z""}, {""url"": ""/products/term-life?add_on=disability"", ""timestamp"": ""2025-07-10T08:33:49Z""}, {""url"": ""/tools/premium-calculator?employees=8&coverage=2000000"", ""timestamp"": ""2025-07-10T08:35:20Z""}, {""url"": ""/schedule-callback?agent_region=CA"", ""timestamp"": ""2025-07-10T08:36:38Z""}], ""actions"": [{""action"": ""schedule_callback"", ""timestamp"": ""2025-07-10T08:36:43Z""}], ""referrer"": ""/bing/smb_keyman_q2"", ""device"": ""laptop/windows"", ""location"": ""San Jose, USA"", ""metadata"": {""user_agent"": ""Windows Edge"", ""browser"": ""Edge"", ""os"": ""Windows 11"", ""device_type"": ""laptop"", ""screen"": ""1920x1080"", ""viewport"": ""1512x915"", ""language"": ""en-US"", ""timezone"": ""America/Los_Angeles"", ""dnt"": true, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""bing"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""smb_keyman_q2"", ""utm_content"": null, ""utm_term"": ""keyman insurance"", ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.bing.com"", ""referrer_path"": ""/search"", ""ip_country"": ""USA"", ""geo_city"": ""San Jose"", ""session_start"": ""2025-07-10T08:30:01Z"", ""session_end"": ""2025-07-10T08:36:43Z"", ""session_duration_sec"": 402, ""pages_count"": 5, ""tracking_id"": ""trk_49ae4e8c27"", ""device_fingerprint"": ""dfp_9f58fa748d""}}","### Digital Twin Profile: Unknown (Lead ID: U002)
+
+**Persona Summary:**  
+45-year-old small business owner / founder residing in San Jose. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 45  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Small Business Owner / Founder  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: $120,000–$200,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (Windows 11 (Edge))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 5 page(s), last page `/schedule-callback?agent_region=CA`; actions taken: ['schedule_callback'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Riders (critical illness / income protector)  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Schedule advisor call and share pre-read
+"
+29-year-old graduate student,"{""user_id"": ""U003"", ""session_id"": ""S003"", ""page_views"": [{""url"": ""/home?utm_source=campus-fair"", ""timestamp"": ""2025-07-10T08:30:00Z""}, {""url"": ""/articles/why-term-life-in-your-20s"", ""timestamp"": ""2025-07-10T08:31:01Z""}, {""url"": ""/products/term-life?sort=low_premium"", ""timestamp"": ""2025-07-10T08:33:06Z""}, {""url"": ""/tools/student-discount-checker?status=full_time"", ""timestamp"": ""2025-07-10T08:34:26Z""}], ""actions"": [{""action"": ""email_capture"", ""timestamp"": ""2025-07-10T08:34:31Z""}], ""referrer"": ""/campus-fair/student_term_push"", ""device"": ""smartphone/android"", ""location"": ""Boston, USA"", ""metadata"": {""user_agent"": ""Android Chrome"", ""browser"": ""Chrome Mobile"", ""os"": ""Android 14"", ""device_type"": ""phone"", ""screen"": ""1080x2400"", ""viewport"": ""390x780"", ""language"": ""en-US"", ""timezone"": ""America/New_York"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""campus-fair"", ""utm_medium"": ""qr"", ""utm_campaign"": ""student_term_push"", ""utm_content"": ""poster_qr"", ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": """", ""referrer_path"": """", ""ip_country"": ""USA"", ""geo_city"": ""Boston"", ""session_start"": ""2025-07-10T08:30:00Z"", ""session_end"": ""2025-07-10T08:34:31Z"", ""session_duration_sec"": 271, ""pages_count"": 4, ""tracking_id"": ""trk_1003ba9264"", ""device_fingerprint"": ""dfp_e5fe046a0f""}}","### Digital Twin Profile: Unknown (Lead ID: U003)
+
+**Persona Summary:**  
+29-year-old graduate student residing in Boston. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 29  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Graduate Student  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: $30,000–$55,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Phone (Android 14 (Chrome Mobile))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/student-discount-checker?status=full_time`; actions taken: ['email_capture'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Encourage quick quote with eligibility checklist
+"
+52-year-old expat executive,"{""user_id"": ""U004"", ""session_id"": ""S004"", ""page_views"": [{""url"": ""/home?lang=en&country=jp"", ""timestamp"": ""2025-07-10T08:30:03Z""}, {""url"": ""/products/critical-illness?currency=JPY"", ""timestamp"": ""2025-07-10T08:32:31Z""}, {""url"": ""/riders/income-protector?currency=JPY"", ""timestamp"": ""2025-07-10T08:34:38Z""}, {""url"": ""/resources/brochure?product=ci_plus&lang=en"", ""timestamp"": ""2025-07-10T08:36:06Z""}, {""url"": ""/chat?topic=portability&lang=en"", ""timestamp"": ""2025-07-10T08:37:30Z""}], ""actions"": [{""action"": ""start_chat"", ""timestamp"": ""2025-07-10T08:37:36Z""}, {""action"": ""download_brochure"", ""timestamp"": ""2025-07-10T08:36:08Z""}], ""referrer"": ""/google/"", ""device"": ""desktop/macos"", ""location"": ""Tokyo, Japan"", ""metadata"": {""user_agent"": ""Mac Safari"", ""browser"": ""Safari"", ""os"": ""macOS 14"", ""device_type"": ""desktop"", ""screen"": ""2560x1440"", ""viewport"": ""1680x946"", ""language"": ""en-JP"", ""timezone"": ""Asia/Tokyo"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""google"", ""utm_medium"": ""organic"", ""utm_campaign"": """", ""utm_content"": """", ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.google.com"", ""referrer_path"": ""/"", ""ip_country"": ""Japan"", ""geo_city"": ""Tokyo"", ""session_start"": ""2025-07-10T08:30:03Z"", ""session_end"": ""2025-07-10T08:37:36Z"", ""session_duration_sec"": 453, ""pages_count"": 5, ""tracking_id"": ""trk_52a001451b"", ""device_fingerprint"": ""dfp_fb119d3a35""}}","### Digital Twin Profile: Unknown (Lead ID: U004)
+
+**Persona Summary:**  
+52-year-old senior executive residing in Tokyo. Researching critical illness options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 52  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Senior Executive  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: ¥180,000–¥300,000  
+- Credit Score Range / Behavior: Not available / varies by country  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of critical illness products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (macOS 14 (Safari))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 5 page(s), last page `/chat?topic=portability&lang=en`; actions taken: ['start_chat', 'download_brochure'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Riders (critical illness / income protector)  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Provide portability and currency FAQs
+"
+33-year-old new parent,"{""user_id"": ""U005"", ""session_id"": ""S005"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:10Z""}, {""url"": ""/life-events/new-baby-checklist"", ""timestamp"": ""2025-07-10T08:31:25Z""}, {""url"": ""/products/term-life?beneficiaries=spouse,child"", ""timestamp"": ""2025-07-10T08:32:29Z""}, {""url"": ""/tools/coverage-planner?dependents=1&education_goal=yes"", ""timestamp"": ""2025-07-10T08:33:30Z""}], ""actions"": [{""action"": ""quote_started"", ""timestamp"": ""2025-07-10T08:33:41Z""}], ""referrer"": ""/instagram/new_baby_term"", ""device"": ""smartphone/ios"", ""location"": ""Sydney, Australia"", ""metadata"": {""user_agent"": ""iPhone Safari"", ""browser"": ""Mobile Safari"", ""os"": ""iOS 17"", ""device_type"": ""phone"", ""screen"": ""1170x2532"", ""viewport"": ""414x896"", ""language"": ""en-AU"", ""timezone"": ""Australia/Sydney"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""instagram"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""new_baby_term"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": ""FB123ABC"", ""referrer_domain"": ""www.instagram.com"", ""referrer_path"": ""/ad"", ""ip_country"": ""Australia"", ""geo_city"": ""Sydney"", ""session_start"": ""2025-07-10T08:30:10Z"", ""session_end"": ""2025-07-10T08:33:41Z"", ""session_duration_sec"": 211, ""pages_count"": 4, ""tracking_id"": ""trk_6de920672a"", ""device_fingerprint"": ""dfp_7301d896c4""}}","### Digital Twin Profile: Unknown (Lead ID: U005)
+
+**Persona Summary:**  
+33-year-old professional (new parent) residing in Sydney. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 33  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional (new parent)  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: A$80,000–A$130,000  
+- Credit Score Range / Behavior: Not available / varies by country  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Phone (iOS 17 (Mobile Safari))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/coverage-planner?dependents=1&education_goal=yes`; actions taken: ['quote_started'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Offer a comparison summary and prompt to start a quote
+"
+47-year-old homeowner,"{""user_id"": ""U006"", ""session_id"": ""S006"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:00Z""}, {""url"": ""/products/mortgage-protection"", ""timestamp"": ""2025-07-10T08:31:33Z""}, {""url"": ""/tools/premium-calculator?coverage=remaining_mortgage&term=15"", ""timestamp"": ""2025-07-10T08:33:20Z""}, {""url"": ""/articles/how-mortgage-protection-works"", ""timestamp"": ""2025-07-10T08:35:08Z""}], ""actions"": [{""action"": ""save_quote"", ""timestamp"": ""2025-07-10T08:35:22Z""}], ""referrer"": ""/facebook_group/mortgage_protect_awareness"", ""device"": ""desktop/windows"", ""location"": ""Manchester, UK"", ""metadata"": {""user_agent"": ""Windows Chrome"", ""browser"": ""Chrome"", ""os"": ""Windows 10"", ""device_type"": ""desktop"", ""screen"": ""1920x1080"", ""viewport"": ""1536x824"", ""language"": ""en-GB"", ""timezone"": ""Europe/London"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""facebook_group"", ""utm_medium"": ""social"", ""utm_campaign"": ""mortgage_protect_awareness"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.facebook.com"", ""referrer_path"": ""/groups/homeowners"", ""ip_country"": ""UK"", ""geo_city"": ""Manchester"", ""session_start"": ""2025-07-10T08:30:00Z"", ""session_end"": ""2025-07-10T08:35:22Z"", ""session_duration_sec"": 322, ""pages_count"": 4, ""tracking_id"": ""trk_4433d5ae19"", ""device_fingerprint"": ""dfp_744bcfcd1b""}}","### Digital Twin Profile: Unknown (Lead ID: U006)
+
+**Persona Summary:**  
+47-year-old professional/homeowner residing in Manchester. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 47  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional/Homeowner  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: £80,000–£130,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings; potential home ownership  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Windows 10 (Chrome))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/articles/how-mortgage-protection-works`; actions taken: ['save_quote'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Send saved-quote resume link with KYC checklist
+"
+31-year-old fitness enthusiast,"{""user_id"": ""U007"", ""session_id"": ""S007"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:04Z""}, {""url"": ""/riders/healthy-lifestyle-discount"", ""timestamp"": ""2025-07-10T08:31:06Z""}, {""url"": ""/tools/wearable-integration?brand=fitband"", ""timestamp"": ""2025-07-10T08:32:22Z""}, {""url"": ""/products/term-life?add_on=wellness_points"", ""timestamp"": ""2025-07-10T08:33:38Z""}], ""actions"": [{""action"": ""email_capture"", ""timestamp"": ""2025-07-10T08:33:41Z""}], ""referrer"": ""/instagram/wellness_points_summer"", ""device"": ""smartwatch+phone/ios"", ""location"": ""Vancouver, Canada"", ""metadata"": {""user_agent"": ""iPhone Safari + Watch"", ""browser"": ""Mobile Safari"", ""os"": ""iOS 17"", ""device_type"": ""phone"", ""screen"": ""1170x2532"", ""viewport"": ""414x896"", ""language"": ""en-CA"", ""timezone"": ""America/Vancouver"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""instagram"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""wellness_points_summer"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.instagram.com"", ""referrer_path"": ""/ad"", ""ip_country"": ""Canada"", ""geo_city"": ""Vancouver"", ""session_start"": ""2025-07-10T08:30:04Z"", ""session_end"": ""2025-07-10T08:33:41Z"", ""session_duration_sec"": 217, ""pages_count"": 4, ""tracking_id"": ""trk_bc9f0818e1"", ""device_fingerprint"": ""dfp_0570341d11""}}","### Digital Twin Profile: Unknown (Lead ID: U007)
+
+**Persona Summary:**  
+31-year-old professional (health-conscious) residing in Vancouver. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 31  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional (health-conscious)  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: C$60,000–C$110,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Phone (iOS 17 (Mobile Safari))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/products/term-life?add_on=wellness_points`; actions taken: ['email_capture'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Riders (critical illness / income protector)  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Encourage quick quote with eligibility checklist
+"
+58-year-old pre-retiree,"{""user_id"": ""U008"", ""session_id"": ""S008"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:09Z""}, {""url"": ""/products/annuity/income-plus"", ""timestamp"": ""2025-07-10T08:31:14Z""}, {""url"": ""/tools/retirement-income-planner?age=58&start_age=60"", ""timestamp"": ""2025-07-10T08:33:08Z""}, {""url"": ""/faq/payout-options"", ""timestamp"": ""2025-07-10T08:34:30Z""}], ""actions"": [{""action"": ""schedule_callback"", ""timestamp"": ""2025-07-10T08:34:32Z""}], ""referrer"": ""/newsletter/annuity_jan"", ""device"": ""tablet/ipados"", ""location"": ""Dallas, USA"", ""metadata"": {""user_agent"": ""iPad Safari"", ""browser"": ""Mobile Safari"", ""os"": ""iPadOS 17"", ""device_type"": ""tablet"", ""screen"": ""2048x1536"", ""viewport"": ""1024x748"", ""language"": ""en-US"", ""timezone"": ""America/Chicago"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""newsletter"", ""utm_medium"": ""email"", ""utm_campaign"": ""annuity_jan"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""mail.securelife.example"", ""referrer_path"": ""/"", ""ip_country"": ""USA"", ""geo_city"": ""Dallas"", ""session_start"": ""2025-07-10T08:30:09Z"", ""session_end"": ""2025-07-10T08:34:32Z"", ""session_duration_sec"": 263, ""pages_count"": 4, ""tracking_id"": ""trk_973136b8e2"", ""device_fingerprint"": ""dfp_28bbe1a0df""}}","### Digital Twin Profile: Unknown (Lead ID: U008)
+
+**Persona Summary:**  
+58-year-old professional nearing retirement residing in Dallas. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 58  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional nearing retirement  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: $100,000–$160,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Tablet (iPadOS 17 (Mobile Safari))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/faq/payout-options`; actions taken: ['schedule_callback'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Schedule advisor call and share pre-read
+"
+26-year-old first-jobber,"{""user_id"": ""U009"", ""session_id"": ""S009"", ""page_views"": [{""url"": ""/home?utm=onboarding"", ""timestamp"": ""2025-07-10T08:30:01Z""}, {""url"": ""/articles/insurance-basics"", ""timestamp"": ""2025-07-10T08:31:29Z""}, {""url"": ""/products/term-life?sort=starter"", ""timestamp"": ""2025-07-10T08:33:09Z""}, {""url"": ""/tools/quick-quote?age=26&smoker=no&sum_assured=100000&term=10"", ""timestamp"": ""2025-07-10T08:34:30Z""}], ""actions"": [{""action"": ""quote_started"", ""timestamp"": ""2025-07-10T08:34:28Z""}], ""referrer"": ""/employer_portal/onboarding_benefits"", ""device"": ""laptop/macos"", ""location"": ""Singapore"", ""metadata"": {""user_agent"": ""Mac Chrome"", ""browser"": ""Chrome"", ""os"": ""macOS 14"", ""device_type"": ""laptop"", ""screen"": ""2560x1600"", ""viewport"": ""1512x982"", ""language"": ""en-SG"", ""timezone"": ""Asia/Singapore"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""employer_portal"", ""utm_medium"": ""referral"", ""utm_campaign"": ""onboarding_benefits"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""benefits.example.com"", ""referrer_path"": ""/portal"", ""ip_country"": null, ""geo_city"": ""Singapore"", ""session_start"": ""2025-07-10T08:30:01Z"", ""session_end"": ""2025-07-10T08:34:30Z"", ""session_duration_sec"": 269, ""pages_count"": 4, ""tracking_id"": ""trk_f57d61b63d"", ""device_fingerprint"": ""dfp_fd67094e7c""}}","### Digital Twin Profile: Unknown (Lead ID: U009)
+
+**Persona Summary:**  
+26-year-old entry-level professional residing in Singapore. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 26  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Entry-level Professional  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: S$30,000–S$55,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (macOS 14 (Chrome))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/quick-quote?age=26&smoker=no&sum_assured=100000&term=10`; actions taken: ['quote_started'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Offer a comparison summary and prompt to start a quote
+"
+40-year-old frequent traveler,"{""user_id"": ""U010"", ""session_id"": ""S010"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:05Z""}, {""url"": ""/products/term-life?add_on=accidental_death"", ""timestamp"": ""2025-07-10T08:32:11Z""}, {""url"": ""/riders/travel-coverage?region=global"", ""timestamp"": ""2025-07-10T08:34:08Z""}, {""url"": ""/tools/beneficiary-planner?beneficiaries=2"", ""timestamp"": ""2025-07-10T08:35:21Z""}], ""actions"": [{""action"": ""start_chat"", ""timestamp"": ""2025-07-10T08:35:30Z""}], ""referrer"": ""/google/global_travel_rider"", ""device"": ""desktop/windows"", ""location"": ""Dubai, UAE"", ""metadata"": {""user_agent"": ""Windows Firefox"", ""browser"": ""Firefox"", ""os"": ""Windows 11"", ""device_type"": ""desktop"", ""screen"": ""1920x1080"", ""viewport"": ""1536x824"", ""language"": ""en-AE"", ""timezone"": ""Asia/Dubai"", ""dnt"": true, ""ad_blocker"": true, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""google"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""global_travel_rider"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.google.com"", ""referrer_path"": ""/"", ""ip_country"": ""UAE"", ""geo_city"": ""Dubai"", ""session_start"": ""2025-07-10T08:30:05Z"", ""session_end"": ""2025-07-10T08:35:30Z"", ""session_duration_sec"": 325, ""pages_count"": 4, ""tracking_id"": ""trk_c9277e1d64"", ""device_fingerprint"": ""dfp_c7f5cf4c59""}}","### Digital Twin Profile: Unknown (Lead ID: U010)
+
+**Persona Summary:**  
+40-year-old consultant / frequent traveler residing in Dubai. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 40  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Consultant / Frequent Traveler  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: AED80,000–AED130,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Windows 11 (Firefox))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/beneficiary-planner?beneficiaries=2`; actions taken: ['start_chat'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Riders (critical illness / income protector)  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Offer a comparison summary and prompt to start a quote
+"
+38-year-old gig worker,"{""user_id"": ""U011"", ""session_id"": ""S011"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:09Z""}, {""url"": ""/products/term-life?payment=monthly"", ""timestamp"": ""2025-07-10T08:31:13Z""}, {""url"": ""/tools/income-stability-check?gig=yes"", ""timestamp"": ""2025-07-10T08:32:37Z""}], ""actions"": [{""action"": ""email_capture"", ""timestamp"": ""2025-07-10T08:32:48Z""}], ""referrer"": ""/tiktok/gig_safety_net"", ""device"": ""smartphone/android"", ""location"": ""Los Angeles, USA"", ""metadata"": {""user_agent"": ""Android Chrome"", ""browser"": ""Chrome Mobile"", ""os"": ""Android 13"", ""device_type"": ""phone"", ""screen"": ""1080x2400"", ""viewport"": ""393x851"", ""language"": ""en-US"", ""timezone"": ""America/Los_Angeles"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""tiktok"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""gig_safety_net"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.tiktok.com"", ""referrer_path"": ""/ad"", ""ip_country"": ""USA"", ""geo_city"": ""Los Angeles"", ""session_start"": ""2025-07-10T08:30:09Z"", ""session_end"": ""2025-07-10T08:32:48Z"", ""session_duration_sec"": 159, ""pages_count"": 3, ""tracking_id"": ""trk_667d678552"", ""device_fingerprint"": ""dfp_d12404ebc2""}}","### Digital Twin Profile: Unknown (Lead ID: U011)
+
+**Persona Summary:**  
+38-year-old gig worker / contractor residing in Los Angeles. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 38  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Gig Worker / Contractor  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: $40,000–$85,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Phone (Android 13 (Chrome Mobile))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 3 page(s), last page `/tools/income-stability-check?gig=yes`; actions taken: ['email_capture'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Encourage quick quote with eligibility checklist
+"
+42-year-old nurse,"{""user_id"": ""U012"", ""session_id"": ""S012"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:06Z""}, {""url"": ""/products/critical-illness"", ""timestamp"": ""2025-07-10T08:31:45Z""}, {""url"": ""/riders/hospital_cash"", ""timestamp"": ""2025-07-10T08:33:27Z""}, {""url"": ""/tools/quick-quote?age=42&smoker=no&sum_assured=300000&term=20"", ""timestamp"": ""2025-07-10T08:34:29Z""}], ""actions"": [{""action"": ""quote_started"", ""timestamp"": ""2025-07-10T08:34:32Z""}, {""action"": ""save_quote"", ""timestamp"": ""2025-07-10T08:35:05Z""}], ""referrer"": ""/google/"", ""device"": ""laptop/windows"", ""location"": ""Chicago, USA"", ""metadata"": {""user_agent"": ""Windows Edge"", ""browser"": ""Edge"", ""os"": ""Windows 11"", ""device_type"": ""laptop"", ""screen"": ""1920x1080"", ""viewport"": ""1512x915"", ""language"": ""en-US"", ""timezone"": ""America/Chicago"", ""dnt"": true, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""google"", ""utm_medium"": ""organic"", ""utm_campaign"": """", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.google.com"", ""referrer_path"": ""/"", ""ip_country"": ""USA"", ""geo_city"": ""Chicago"", ""session_start"": ""2025-07-10T08:30:06Z"", ""session_end"": ""2025-07-10T08:35:05Z"", ""session_duration_sec"": 299, ""pages_count"": 4, ""tracking_id"": ""trk_31cdca490c"", ""device_fingerprint"": ""dfp_9f58fa748d""}}","### Digital Twin Profile: Unknown (Lead ID: U012)
+
+**Persona Summary:**  
+42-year-old nurse / healthcare professional residing in Chicago. Researching critical illness options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 42  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Nurse / Healthcare Professional  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: $55,000–$95,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of critical illness products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (Windows 11 (Edge))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/tools/quick-quote?age=42&smoker=no&sum_assured=300000&term=20`; actions taken: ['quote_started', 'save_quote'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Riders (critical illness / income protector)  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Send saved-quote resume link with KYC checklist
+"
+50-year-old teacher,"{""user_id"": ""U013"", ""session_id"": ""S013"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:04Z""}, {""url"": ""/articles/term-vs-whole"", ""timestamp"": ""2025-07-10T08:31:33Z""}, {""url"": ""/products/whole-life?sort=featured"", ""timestamp"": ""2025-07-10T08:33:22Z""}], ""actions"": [{""action"": ""exit_intent_shown"", ""timestamp"": ""2025-07-10T08:33:53Z""}], ""referrer"": ""/reddit/education_series"", ""device"": ""desktop/windows"", ""location"": ""Dublin, Ireland"", ""metadata"": {""user_agent"": ""Windows Chrome"", ""browser"": ""Chrome"", ""os"": ""Windows 10"", ""device_type"": ""desktop"", ""screen"": ""1920x1080"", ""viewport"": ""1536x824"", ""language"": ""en-IE"", ""timezone"": ""Europe/Dublin"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""reddit"", ""utm_medium"": ""referral"", ""utm_campaign"": ""education_series"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.reddit.com"", ""referrer_path"": ""/r/personalfinance"", ""ip_country"": ""Ireland"", ""geo_city"": ""Dublin"", ""session_start"": ""2025-07-10T08:30:04Z"", ""session_end"": ""2025-07-10T08:33:53Z"", ""session_duration_sec"": 229, ""pages_count"": 3, ""tracking_id"": ""trk_f2016f2734"", ""device_fingerprint"": ""dfp_744bcfcd1b""}}","### Digital Twin Profile: Unknown (Lead ID: U013)
+
+**Persona Summary:**  
+50-year-old teacher / educator residing in Dublin. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 50  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Teacher / Educator  
+- Education Level: Bachelor’s Degree  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: €55,000–€95,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Windows 10 (Chrome))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 3 page(s), last page `/products/whole-life?sort=featured`; actions taken: ['exit_intent_shown'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Offer a comparison summary and prompt to start a quote
+"
+34-year-old fintech analyst,"{""user_id"": ""U014"", ""session_id"": ""S014"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:01Z""}, {""url"": ""/compare?products=term_elite,term_basic,ci_plus"", ""timestamp"": ""2025-07-10T08:31:49Z""}, {""url"": ""/products/term_elite?coverage=1000000&term=25"", ""timestamp"": ""2025-07-10T08:33:24Z""}, {""url"": ""/checkout/start?item=term_elite"", ""timestamp"": ""2025-07-10T08:34:48Z""}], ""actions"": [{""action"": ""add_to_cart"", ""item_id"": ""term_elite"", ""timestamp"": ""2025-07-10T08:33:37Z""}, {""action"": ""checkout_start"", ""timestamp"": ""2025-07-10T08:34:50Z""}, {""action"": ""payment_attempt_failed"", ""timestamp"": ""2025-07-10T08:35:37Z""}], ""referrer"": ""/linkedin/term_elite_pros"", ""device"": ""desktop/macos"", ""location"": ""London, UK"", ""metadata"": {""user_agent"": ""Mac Safari"", ""browser"": ""Safari"", ""os"": ""macOS 14"", ""device_type"": ""desktop"", ""screen"": ""2560x1440"", ""viewport"": ""1728x1117"", ""language"": ""en-GB"", ""timezone"": ""Europe/London"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""linkedin"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""term_elite_pros"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.linkedin.com"", ""referrer_path"": ""/feed"", ""ip_country"": ""UK"", ""geo_city"": ""London"", ""session_start"": ""2025-07-10T08:30:01Z"", ""session_end"": ""2025-07-10T08:35:37Z"", ""session_duration_sec"": 336, ""pages_count"": 4, ""tracking_id"": ""trk_58384b2347"", ""device_fingerprint"": ""dfp_fb119d3a35""}}","### Digital Twin Profile: Unknown (Lead ID: U014)
+
+**Persona Summary:**  
+34-year-old fintech analyst residing in London. Researching critical illness options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 34  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Fintech Analyst  
+- Education Level: Bachelor’s Degree  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: £90,000–£140,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of critical illness products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (macOS 14 (Safari))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/checkout/start?item=term_elite`; actions taken: ['add_to_cart', 'checkout_start', 'payment_attempt_failed'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Assist with payment alternatives and resume checkout link
+"
+46-year-old divorcee,"{""user_id"": ""U015"", ""session_id"": ""S015"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:04Z""}, {""url"": ""/life-events/divorce-checklist"", ""timestamp"": ""2025-07-10T08:31:29Z""}, {""url"": ""/products/term-life?beneficiaries=child"", ""timestamp"": ""2025-07-10T08:32:51Z""}], ""actions"": [{""action"": ""start_chat"", ""timestamp"": ""2025-07-10T08:33:11Z""}], ""referrer"": ""/facebook/life_events_divorce"", ""device"": ""smartphone/ios"", ""location"": ""Toronto, Canada"", ""metadata"": {""user_agent"": ""iPhone Safari"", ""browser"": ""Mobile Safari"", ""os"": ""iOS 17"", ""device_type"": ""phone"", ""screen"": ""1170x2532"", ""viewport"": ""414x896"", ""language"": ""en-CA"", ""timezone"": ""America/Toronto"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""facebook"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""life_events_divorce"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.facebook.com"", ""referrer_path"": ""/ads"", ""ip_country"": ""Canada"", ""geo_city"": ""Toronto"", ""session_start"": ""2025-07-10T08:30:04Z"", ""session_end"": ""2025-07-10T08:33:11Z"", ""session_duration_sec"": 187, ""pages_count"": 3, ""tracking_id"": ""trk_4aa3ca9622"", ""device_fingerprint"": ""dfp_7301d896c4""}}","### Digital Twin Profile: Unknown (Lead ID: U015)
+
+**Persona Summary:**  
+46-year-old professional (life event: divorce) residing in Toronto. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 46  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional (life event: divorce)  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: C$60,000–C$110,000  
+- Credit Score Range / Behavior: Good (approx. 680–750)  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Phone (iOS 17 (Mobile Safari))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 3 page(s), last page `/products/term-life?beneficiaries=child`; actions taken: ['start_chat'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Offer a comparison summary and prompt to start a quote
+"
+28-year-old digital nomad,"{""user_id"": ""U016"", ""session_id"": ""S016"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:08Z""}, {""url"": ""/riders/global-expat-coverage"", ""timestamp"": ""2025-07-10T08:32:06Z""}, {""url"": ""/products/term-life?add_on=international_assist"", ""timestamp"": ""2025-07-10T08:33:42Z""}], ""actions"": [{""action"": ""email_capture"", ""timestamp"": ""2025-07-10T08:33:55Z""}], ""referrer"": ""/google/expat_nomad"", ""device"": ""laptop/macos"", ""location"": ""Bali, Indonesia"", ""metadata"": {""user_agent"": ""Mac Chrome"", ""browser"": ""Chrome"", ""os"": ""macOS 13"", ""device_type"": ""laptop"", ""screen"": ""2560x1600"", ""viewport"": ""1512x982"", ""language"": ""en-ID"", ""timezone"": ""Asia/Makassar"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""google"", ""utm_medium"": ""organic"", ""utm_campaign"": ""expat_nomad"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.google.com"", ""referrer_path"": ""/"", ""ip_country"": ""Indonesia"", ""geo_city"": ""Bali"", ""session_start"": ""2025-07-10T08:30:08Z"", ""session_end"": ""2025-07-10T08:33:55Z"", ""session_duration_sec"": 227, ""pages_count"": 3, ""tracking_id"": ""trk_23c11bba65"", ""device_fingerprint"": ""dfp_f440539f83""}}","### Digital Twin Profile: Unknown (Lead ID: U016)
+
+**Persona Summary:**  
+28-year-old remote professional / digital nomad residing in Bali. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 28  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Remote Professional / Digital Nomad  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: Rp40,000–Rp85,000  
+- Credit Score Range / Behavior: Not available / varies by country  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Laptop (macOS 13 (Chrome))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 3 page(s), last page `/products/term-life?add_on=international_assist`; actions taken: ['email_capture'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Riders (critical illness / income protector)  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Encourage quick quote with eligibility checklist
+"
+55-year-old caregiver,"{""user_id"": ""U017"", ""session_id"": ""S017"", ""page_views"": [{""url"": ""/home?lang=ja"", ""timestamp"": ""2025-07-10T08:30:02Z""}, {""url"": ""/products/critical-illness?lang=ja"", ""timestamp"": ""2025-07-10T08:31:37Z""}, {""url"": ""/riders/family-care?lang=ja"", ""timestamp"": ""2025-07-10T08:33:06Z""}, {""url"": ""/faq/claim-process?lang=ja"", ""timestamp"": ""2025-07-10T08:34:20Z""}], ""actions"": [{""action"": ""download_brochure"", ""timestamp"": ""2025-07-10T08:34:26Z""}], ""referrer"": ""/yahoo/"", ""device"": ""tablet/ipados"", ""location"": ""Osaka, Japan"", ""metadata"": {""user_agent"": ""iPad Safari"", ""browser"": ""Mobile Safari"", ""os"": ""iPadOS 17"", ""device_type"": ""tablet"", ""screen"": ""2048x1536"", ""viewport"": ""1024x748"", ""language"": ""ja-JP"", ""timezone"": ""Asia/Tokyo"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""yahoo"", ""utm_medium"": ""organic"", ""utm_campaign"": """", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.yahoo.co.jp"", ""referrer_path"": ""/search"", ""ip_country"": ""Japan"", ""geo_city"": ""Osaka"", ""session_start"": ""2025-07-10T08:30:02Z"", ""session_end"": ""2025-07-10T08:34:26Z"", ""session_duration_sec"": 264, ""pages_count"": 4, ""tracking_id"": ""trk_ece69c8421"", ""device_fingerprint"": ""dfp_28bbe1a0df""}}","### Digital Twin Profile: Unknown (Lead ID: U017)
+
+**Persona Summary:**  
+55-year-old caregiver / homemaker residing in Osaka. Researching critical illness options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 55  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Caregiver / Homemaker  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: Japanese (primary)
+
+**Financial Information:**  
+- Annual Income: ¥35,000–¥60,000  
+- Credit Score Range / Behavior: Not available / varies by country  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of critical illness products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Tablet (iPadOS 17 (Mobile Safari))  
+- Language preference: Japanese for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/faq/claim-process?lang=ja`; actions taken: ['download_brochure'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Riders (critical illness / income protector)  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Offer a comparison summary and prompt to start a quote
+"
+39-year-old entrepreneur,"{""user_id"": ""U018"", ""session_id"": ""S018"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:08Z""}, {""url"": ""/products/keyman-insurance"", ""timestamp"": ""2025-07-10T08:31:29Z""}, {""url"": ""/tools/premium-calculator?employees=5&coverage=100000000"", ""timestamp"": ""2025-07-10T08:32:45Z""}, {""url"": ""/lead-form?source=linkedin"", ""timestamp"": ""2025-07-10T08:33:55Z""}], ""actions"": [{""action"": ""submit_lead_form"", ""timestamp"": ""2025-07-10T08:34:05Z""}], ""referrer"": ""/linkedin/smb_keyman_apac"", ""device"": ""desktop/windows"", ""location"": ""Seoul, South Korea"", ""metadata"": {""user_agent"": ""Windows Chrome"", ""browser"": ""Chrome"", ""os"": ""Windows 11"", ""device_type"": ""desktop"", ""screen"": ""1920x1080"", ""viewport"": ""1536x824"", ""language"": ""ko-KR"", ""timezone"": ""Asia/Seoul"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""linkedin"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""smb_keyman_apac"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.linkedin.com"", ""referrer_path"": ""/ads"", ""ip_country"": ""South Korea"", ""geo_city"": ""Seoul"", ""session_start"": ""2025-07-10T08:30:08Z"", ""session_end"": ""2025-07-10T08:34:05Z"", ""session_duration_sec"": 237, ""pages_count"": 4, ""tracking_id"": ""trk_e58d8ab646"", ""device_fingerprint"": ""dfp_fa9b48a110""}}","### Digital Twin Profile: Unknown (Lead ID: U018)
+
+**Persona Summary:**  
+39-year-old entrepreneur residing in Seoul. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 39  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Entrepreneur  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: Korean (primary)
+
+**Financial Information:**  
+- Annual Income: ₩120,000–₩200,000  
+- Credit Score Range / Behavior: Not available / varies by country  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (Windows 11 (Chrome))  
+- Language preference: Korean for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 4 page(s), last page `/lead-form?source=linkedin`; actions taken: ['submit_lead_form'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Offer a comparison summary and prompt to start a quote
+"
+61-year-old near-retiree,"{""user_id"": ""U019"", ""session_id"": ""S019"", ""page_views"": [{""url"": ""/home?lang=fr"", ""timestamp"": ""2025-07-10T08:30:09Z""}, {""url"": ""/products/annuity/guaranteed-income?lang=fr"", ""timestamp"": ""2025-07-10T08:32:07Z""}, {""url"": ""/tools/retirement-income-planner?age=61&start_age=63"", ""timestamp"": ""2025-07-10T08:34:09Z""}], ""actions"": [{""action"": ""schedule_callback"", ""timestamp"": ""2025-07-10T08:34:17Z""}], ""referrer"": ""/newsletter/annuities_fr"", ""device"": ""desktop/macos"", ""location"": ""Paris, France"", ""metadata"": {""user_agent"": ""Mac Safari"", ""browser"": ""Safari"", ""os"": ""macOS 14"", ""device_type"": ""desktop"", ""screen"": ""2560x1440"", ""viewport"": ""1680x987"", ""language"": ""fr-FR"", ""timezone"": ""Europe/Paris"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""newsletter"", ""utm_medium"": ""email"", ""utm_campaign"": ""annuities_fr"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""mail.securelife.example"", ""referrer_path"": ""/"", ""ip_country"": ""France"", ""geo_city"": ""Paris"", ""session_start"": ""2025-07-10T08:30:09Z"", ""session_end"": ""2025-07-10T08:34:17Z"", ""session_duration_sec"": 248, ""pages_count"": 3, ""tracking_id"": ""trk_e4f89e873f"", ""device_fingerprint"": ""dfp_fb119d3a35""}}","### Digital Twin Profile: Unknown (Lead ID: U019)
+
+**Persona Summary:**  
+61-year-old professional nearing retirement residing in Paris. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 61  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Professional nearing retirement  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: French (primary)
+
+**Financial Information:**  
+- Annual Income: €100,000–€160,000  
+- Credit Score Range / Behavior: Not available / varies by country  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Desktop (macOS 14 (Safari))  
+- Language preference: French for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 3 page(s), last page `/tools/retirement-income-planner?age=61&start_age=63`; actions taken: ['schedule_callback'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Schedule advisor call and share pre-read
+"
+23-year-old intern,"{""user_id"": ""U020"", ""session_id"": ""S020"", ""page_views"": [{""url"": ""/home"", ""timestamp"": ""2025-07-10T08:30:01Z""}, {""url"": ""/articles/insurance-basics"", ""timestamp"": ""2025-07-10T08:31:21Z""}, {""url"": ""/products/term-life?sort=student_friendly"", ""timestamp"": ""2025-07-10T08:32:34Z""}], ""actions"": [{""action"": ""exit_intent_shown"", ""timestamp"": ""2025-07-10T08:32:57Z""}], ""referrer"": ""/youtube/learn_insurance_basics"", ""device"": ""smartphone/android"", ""location"": ""Hyderabad, India"", ""metadata"": {""user_agent"": ""Android Chrome"", ""browser"": ""Chrome Mobile"", ""os"": ""Android 14"", ""device_type"": ""phone"", ""screen"": ""1080x2400"", ""viewport"": ""393x851"", ""language"": ""en-IN"", ""timezone"": ""Asia/Kolkata"", ""dnt"": false, ""ad_blocker"": false, ""cookies_enabled"": true, ""consent"": {""analytics"": true, ""marketing"": true, ""personalization"": true}, ""utm_source"": ""youtube"", ""utm_medium"": ""cpc"", ""utm_campaign"": ""learn_insurance_basics"", ""utm_content"": null, ""utm_term"": null, ""gclid"": null, ""fbclid"": null, ""referrer_domain"": ""www.youtube.com"", ""referrer_path"": ""/ad"", ""ip_country"": ""India"", ""geo_city"": ""Hyderabad"", ""session_start"": ""2025-07-10T08:30:01Z"", ""session_end"": ""2025-07-10T08:32:57Z"", ""session_duration_sec"": 176, ""pages_count"": 3, ""tracking_id"": ""trk_716c6c675f"", ""device_fingerprint"": ""dfp_e5fe046a0f""}}","### Digital Twin Profile: Unknown (Lead ID: U020)
+
+**Persona Summary:**  
+23-year-old intern / trainee residing in Hyderabad. Researching life insurance options; browsing pattern suggests thoughtful comparison and a digital-first approach.
+
+**Personal Information:**  
+- Full Name: Unknown  
+- Age: 23  
+- Gender: Not disclosed  
+- Marital Status: Not disclosed  
+- Dependents: Not disclosed  
+
+**Demographic Information:**  
+- Occupation: Intern / Trainee  
+- Education Level: Bachelor’s or equivalent  
+- Household Size: Unknown  
+- Language: English (primary)
+
+**Financial Information:**  
+- Annual Income: ₹30,000–₹55,000  
+- Credit Score Range / Behavior: Not available / varies by country  
+- Assets: Moderate liquid savings  
+- Liabilities: Unknown  
+
+**Insurance History:**  
+- Current Policies: Unknown; behavior indicates active exploration of life insurance products
+
+**Behavioral Signals & Preferences:**  
+- Primary channel: Phone (Android 14 (Chrome Mobile))  
+- Language preference: English for communications and materials  
+- Consent: Granted for essential analytics, marketing, and personalization  
+- Quoting behavior: Visited 3 page(s), last page `/products/term-life?sort=student_friendly`; actions taken: ['exit_intent_shown'].
+
+**Engagement & Opportunities:**  
+- Short-term upsell opportunities: Plan comparison guidance and coverage right-sizing  
+- Messaging preferences: Personalized content with clear coverage/price trade-offs and concise next steps  
+- Next best actions: Offer a comparison summary and prompt to start a quote
+"
