@@ -9,7 +9,9 @@ class Agent:
     """
     A data class representing an AI agent with its core attributes and metrics.
     """
+    id: str
     name: str
+    version: str
     goal: str
     inputs: List[str]
     outputs: List[str]
@@ -27,17 +29,33 @@ class Agent:
 #Function to create a list of agents and return
 def get_agents_list() -> List[Agent]:
     digitalTwinAgent = Agent(
+        id= "digital_twin_agent",
         name="Digital Twin Agent",
+        version="1.0",
         goal="""Create an imaginary persona based on data provided and update the digital twin with data as much as possible.If existing_digital_twin information is provided, update it with new or changed information based on clear signals in data""",
-        inputs={"Website traffic data","Existing Digital twin if any"},
-        outputs={"Updated/New Digital twin"},
+        inputs=["Website traffic data", "Existing Digital twin if any"],
+        outputs=["Updated/New Digital twin"],
         metrics={"Data processed": 100, "Digital twins created": 78, "Digital twins updated": 23, "Cost this month": 20000}
     )
     leadImageGenerationAgent = Agent(
+        id= "lead_image_generation_agent",
         name="Image generation Agent",
+        version="1.0",
         goal="Generate image of digital twin based on persona",
-        inputs={"Digital Twin profile"},
-        outputs={"Digital Twin image"},
+        inputs=["Digital Twin profile"],
+        outputs=["Digital Twin image"],
         metrics={"Photos generated": 34, "Cost this month": 20000}
     )
     return [digitalTwinAgent,leadImageGenerationAgent]
+
+
+def get_agent(id: str) -> Agent:
+       return Agent(
+        id= "lead_image_generation_agent",
+        name="Image generation Agent",
+        version="1.0",
+        goal="Generate image of digital twin based on persona",
+        inputs=["Digital Twin profile"],
+        outputs=["Digital Twin image"],
+        metrics={"Photos generated": 34, "Cost this month": 20000}
+    )

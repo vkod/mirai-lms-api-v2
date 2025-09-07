@@ -5,3 +5,5 @@ python-multipart
 dspy-ai>=3.0.3
 dotenv
 pandas
+pyee
+Pillow
