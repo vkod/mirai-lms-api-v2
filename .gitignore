@@ -10,7 +10,8 @@ __pycache__/
 .venv/
 venv/
 env/
-
+.mlartifacts/
+mlartifacts/
 # Distribution / packaging
 .Python
 build/

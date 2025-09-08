@@ -7,3 +7,4 @@ dotenv
 pandas
 pyee
 Pillow
+mlflow>=3.0.0
