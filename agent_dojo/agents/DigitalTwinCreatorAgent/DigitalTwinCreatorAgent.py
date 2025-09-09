@@ -11,19 +11,19 @@ load_dotenv()
 
 #dspy.settings.configure( track_usage=True )
 
-import mlflow
+#import mlflow
 
-mlflow.set_tracking_uri("http://localhost:5000")
-mlflow.set_experiment("DSPy")
+#mlflow.set_tracking_uri("http://localhost:5000")
+#mlflow.set_experiment("DSPy")
 
-mlflow.dspy.autolog(
+#mlflow.dspy.autolog(
     # Log the optimization progress
-    log_compiles=True,
+#    log_compiles=True,
     # Log the evaluation results
-    log_evals=True,
+#    log_evals=True,
     # Log traces from module executions
-    log_traces=True
-)
+#    log_traces=True
+#)
 
 TEST_SET="lead_personas_dataset_v6_10records_detailed_existing.csv"
 
