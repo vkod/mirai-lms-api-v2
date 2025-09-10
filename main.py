@@ -24,6 +24,10 @@ from pydantic import BaseModel
 class QuestionPayload(BaseModel):
     question: str
 
+class DigitalTwinInputPayload(BaseModel):
+    data: str
+    existing_digital_twin: str = ""
+
 @app.get("/")
 async def root():
     return {"message": "Mirai LMS API is running"}
@@ -38,6 +42,11 @@ async def optimize_digital_twin_agent(background_tasks: BackgroundTasks):
 @app.post("/run_digital_twin_agent")
 def run_digital_twin_agent(data, existing_digital_twin=""):
    return DigitalTwinCreatorAgent.run(data, existing_digital_twin=existing_digital_twin )
+
+#API to run  DigitalTwinCreatorAgent
+@app.post("/test_digital_twin_agent")
+def test_digital_twin_agent(payload: DigitalTwinInputPayload):
+   return DigitalTwinCreatorAgent.run(payload.data, existing_digital_twin=payload.existing_digital_twin)
 
 #API to return list of agents
 @app.get("/agent_list")
@@ -64,6 +73,11 @@ async def get_synthetic_persona_route(id: str):
 @app.post("/generate_persona_image")
 def generate_persona_image(persona: str):
    return PersonaImageGenerationAgent.run(persona )
+
+@app.post("/test_lead_image_generation_agent")
+def test_lead_image_generation_agent(persona: str):
+   return PersonaImageGenerationAgent.run(persona )
+
 
 history=dspy.History(messages=[])
 

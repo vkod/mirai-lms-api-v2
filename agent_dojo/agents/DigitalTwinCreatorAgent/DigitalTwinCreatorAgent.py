@@ -73,6 +73,10 @@ def _metric(example,pred,trace=None):
     assessment_question = "Does the assessed text have enough information captured to act as a digital twin of a lead?"
     enough_information = dspy.Predict(AssessDigitalTwinQualitySig)(assessed_text=digital_twin, assessment_question=assessment_question)
 
+
+    assessment_question = "Is the assessed text in markdown format?"
+    is_in_markdown_format = dspy.Predict(AssessDigitalTwinQualitySig)(assessed_text=digital_twin, assessment_question=assessment_question).assessment_answer
+
     digital_twin_update_good=False
 
     #For some reason existing_digital_twin is sometimes float
@@ -92,15 +96,16 @@ def _metric(example,pred,trace=None):
 
     #Print all three values
     print(f"enough_information: {enough_information.assessment_answer}, contains_key_sections: {contains_key_sections}, digital_twin_update_good: {digital_twin_update_good}")
-    score=enough_information.assessment_answer + contains_key_sections + digital_twin_update_good
+    score=enough_information.assessment_answer + contains_key_sections + digital_twin_update_good + is_in_markdown_format
 
     #if trace is not None: return score>=3
-    #return score/3.0
+    #return score/4.0
     return dspy.Prediction(
         score=score,
         enough_information=enough_information.assessment_answer,
         contains_key_sections=contains_key_sections,
-        digital_twin_update_good=digital_twin_update_good
+        digital_twin_update_good=digital_twin_update_good,
+        is_in_markdown_format=is_in_markdown_format
     )
 
 def _simple_metric(example,pred,trace=None):
@@ -164,23 +169,26 @@ def _compute_score_with_feedback(gold, pred, trace=None, pred_name=None, pred_tr
 
     metrics= _metric(gold, pred, trace)
     feedback_text = ""
-    if metrics.score==3:
+    if metrics.score==4:
         if gold.existing_digital_twin!='nan' and gold.existing_digital_twin.strip()!="":
             feedback_text = "The digital twin created is of high quality based on three criteria: enough information to act as a digital twin, contains key sections, and good updates to existing digital twin."
         else:
             feedback_text = "The digital twin created is of high quality based on two criteria: enough information to act as a digital twin, and contains key sections."
     
     if metrics.enough_information==False:
-        feedback_text = f"The digital twin created did not have enough information to act as a digital twin. The score is {metrics.score}/3.0."
+        feedback_text = f"The digital twin created did not have enough information to act as a digital twin. The score is {metrics.score}/4.0."
+
+    if metrics.is_in_markdown_format==False:
+        feedback_text = f"The digital twin created is not in markdown format. The score is {metrics.score}/4.0. The digital twin should be in markdown format."
 
     if metrics.contains_key_sections==False:
-        feedback_text = f"The digital twin created did not contain key sections. The score is {metrics.score}/3.0. Digital twin should contain 'Financial Information', 'Occupation', 'Annual Income' and 'Persona Summary'"
-    
+        feedback_text = f"The digital twin created did not contain key sections. The score is {metrics.score}/4.0. Digital twin should contain 'Financial Information', 'Occupation', 'Annual Income' and 'Persona Summary'"
+
     if metrics.digital_twin_update_good==False:
-        feedback_text = f"The updates made to the existing digital twin were not good and relevant. The score is {metrics.score}/3.0."
+        feedback_text = f"The updates made to the existing digital twin were not good and relevant. The score is {metrics.score}/4.0."
 
     return dspy.Prediction(
-        score=metrics.score/3.0,
+        score=metrics.score/4.0,
         feedback=feedback_text,
     )
 
@@ -188,7 +196,7 @@ def optimize_using_gepa():
     test_set = _load_test_set(TEST_SET, __file__)
     with dspy.context(lm=model_for_optimization):
         program = DigitalTwinCreatorAgent()
-        optimizer = dspy.GEPA(metric=_compute_score_with_feedback,  num_threads=4, track_stats=True, track_best_outputs=True, reflection_lm=reflection_model,max_full_evals=5)
+        optimizer = dspy.GEPA(metric=_compute_score_with_feedback,  num_threads=4, track_stats=True, track_best_outputs=True, reflection_lm=reflection_model,max_full_evals=15)
         optimized_program = optimizer.compile(program, trainset=test_set)
         _save_optimized_program(optimized_program, __file__)
         log_lm_execution_cost(model_for_optimization,"optimize_using_gepa_metrics")
