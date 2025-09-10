@@ -2,7 +2,7 @@ fastapi
 uvicorn
 sqlmodel
 python-multipart
-dspy-ai>=3.0.3
+dspy-ai==3.0.3
 dotenv
 pandas
 pyee

@@ -38,6 +38,13 @@ async def optimize_digital_twin_agent(background_tasks: BackgroundTasks):
     background_tasks.add_task(DigitalTwinCreatorAgent.optimize)
     return {"message": "optimizing started in the background"}
 
+@app.post("/optimize_synthetic_persona_chat_agent")
+async def optimize_synthetic_persona_chat_agent(background_tasks: BackgroundTasks):
+    background_tasks.add_task(SyntheticPersonChatAgent.optimize)
+    return {"message": "optimizing started in the background"}
+
+
+
 #API to run  DigitalTwinCreatorAgent
 @app.post("/run_digital_twin_agent")
 def run_digital_twin_agent(data, existing_digital_twin=""):

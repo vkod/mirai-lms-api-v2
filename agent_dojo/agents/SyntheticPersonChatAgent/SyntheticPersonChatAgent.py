@@ -9,12 +9,13 @@ from typing import Any,Literal
 from dotenv import load_dotenv
 load_dotenv()
 
+#Get variable from environment
+TEST_SET = "llm_chat_dataset_universal.csv"
 
-TEST_SET="lead_personas_dataset_v6_10records_detailed_existing.csv"
 
 reflection_model=dspy.LM(model="gpt-4.1", temperature=1.0, max_tokens=32000)
-model_for_optimization=dspy.LM('openai/gpt-4.1',temperature=1.0, max_tokens=16000)
-model_for_execution=dspy.LM('openai/gpt-4.1',temperature=1.0, max_tokens=16000)
+model_for_optimization=dspy.LM("openai/gpt-4.1-mini", temperature=1.0, max_tokens=16000)
+model_for_execution=dspy.LM("openai/gpt-4.1-mini", temperature=1.0, max_tokens=16000)
 
 
 class SyntheticPersonaChatSig(dspy.Signature):
@@ -34,13 +35,23 @@ class SyntheticPersonChatAgent(dspy.Module):
         return dspy.Prediction(answer=answer.answer)
 
 
+class AssessAnswer(dspy.Signature):
+    """Assess if answer matches with the expected_answer"""
+    answer = dspy.InputField()
+    expected_answer: str = dspy.InputField()
+    assessment_question = dspy.InputField()
+    assessment_answer: bool = dspy.OutputField()
+
 def _metric(example,pred,trace=None):
     answer = pred.answer
 
-    if answer is None or answer.strip()=="":
-        score=0
-    else:
+    assessment_question = "Does the answer provided match the expected answer to the question?"
+    answer_matched = dspy.Predict(AssessAnswer)(answer=answer, expected_answer=example.answer, assessment_question=assessment_question).assessment_answer
+
+    if answer_matched:
         score=1
+    else:
+        score=0
 
     return dspy.Prediction(
         score=score,
@@ -55,15 +66,20 @@ def _load_test_set(csv_filename, caller_file):
     csv_path = os.path.join(get_training_set_directory(caller_file), csv_filename)
     df = pd.read_csv(csv_path)
     test_set = [
-        dspy.Example(data=row['data'], existing_digital_twin=row['existing_digital_twin'], digital_twin=row['digital_twin']).with_inputs("data", "existing_digital_twin")
+        dspy.Example(persona=row['persona'], question=row['question'], history=dspy.History(messages=[]), answer=row['answer']).with_inputs("persona", "history", "question")
         for _, row in df.iterrows()
     ]
-    return test_set
+
+    #Return about 80% records as test_set and rest as val_set
+    split_index = int(0.8 * len(test_set))
+    val_set = test_set[split_index:]
+    test_set = test_set[:split_index]
+    return test_set, val_set
 
 def _save_optimized_program(optimized_program, caller_file):
     optimized_program_file_dir = get_optimized_program_file_directory(caller_file)
     optimized_program.save(
-        os.path.join(optimized_program_file_dir, 'DigitalTwinCreatorAgent_Optimized'),
+        os.path.join(optimized_program_file_dir, 'SyntheticPersonChatAgent_Optimized'),
         save_program=True
     )
 
@@ -73,7 +89,7 @@ def _compute_score_with_feedback(gold, pred, trace=None, pred_name=None, pred_tr
     metrics= _metric(gold, pred, trace)
     feedback_text = ""
     if metrics.score == 0:
-        feedback_text = f"You did not answer the question. The score is {metrics.score}/1.0."
+        feedback_text = f"You did not answer the question as per the persona information. The score is {metrics.score}/1.0."
     elif metrics.score == 1:
         feedback_text = f"You answered the question well. The score is {metrics.score}/1.0."
 
@@ -83,29 +99,34 @@ def _compute_score_with_feedback(gold, pred, trace=None, pred_name=None, pred_tr
     )
 
 def optimize_using_gepa():
-    test_set = _load_test_set(TEST_SET, __file__)
+    test_set,val_set = _load_test_set(TEST_SET, __file__)
     with dspy.context(lm=model_for_optimization):
         program = SyntheticPersonChatAgent()
-        optimizer = dspy.GEPA(metric=_compute_score_with_feedback,  num_threads=4, track_stats=True, track_best_outputs=True, reflection_lm=reflection_model,max_full_evals=5)
-        optimized_program = optimizer.compile(program, trainset=test_set)
+        optimizer = dspy.GEPA(metric=_compute_score_with_feedback, use_merge=False, num_threads=4, reflection_lm=reflection_model,max_full_evals=1)
+        optimized_program = optimizer.compile(program, trainset=test_set,valset=val_set)
         _save_optimized_program(optimized_program, __file__)
         log_lm_execution_cost(model_for_optimization,"optimize_using_gepa_metrics")
         log_lm_execution_cost(reflection_model,"optimize_using_gepa_reflection")
 
-def run(question,history, persona=""):
+def run(question, history, persona=""):
     agent = SyntheticPersonChatAgent()
-    #optimized_program_file_dir = get_optimized_program_file_directory(__file__)
-    #optimized_program_file = os.path.join(optimized_program_file_dir, 'SyntheticPersonChatAgent_Optimized')
-    #if os.path.exists(optimized_program_file):
-    #    agent = dspy.load(optimized_program_file)
-    #else:
+    optimized_program_file_dir = get_optimized_program_file_directory(__file__)
+    optimized_program_file = os.path.join(optimized_program_file_dir, 'SyntheticPersonChatAgent_Optimized')
+    if os.path.exists(optimized_program_file):
+        agent = dspy.load(optimized_program_file)
+    else:
         #Throw error
-       # raise FileNotFoundError("Optimized program not found. Please train the agent first.")
+       raise FileNotFoundError("Optimized program not found. Please train the agent first.")
 
     lm=model_for_execution
-    with dspy.context(lm=lm):
-        output = agent(question=question, history=history, persona=persona)
-        #print(output.get_lm_usage())
-        log_lm_execution_cost(lm,"SyntheticPersonChatAgent_run")
-
-    return output.answer
+    try:
+        with dspy.context(lm=lm):
+            output = agent(question=question, history=history, persona=persona)
+            #print(output.get_lm_usage())
+            log_lm_execution_cost(lm,"SyntheticPersonChatAgent_run")
+        return output.answer
+    except Exception as e:
+        # If there's a serialization error, try with a simple string response
+        print(f"Error in SyntheticPersonChatAgent: {e}")
+        # Fall back to a simpler implementation if needed
+        return f"I apologize, but I encountered an error processing your request. Please try again with a different question."
