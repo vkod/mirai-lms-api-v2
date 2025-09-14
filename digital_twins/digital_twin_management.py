@@ -1,7 +1,49 @@
 
 
+import asyncio
 from dataclasses import dataclass
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
+import os
+import sys
+
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from utils.async_helper import run_async
+
+from storage.digital_twin_storage import ScalableDigitalTwinStorage
+from storage.digital_twin_search import DigitalTwinSearch
+from storage.persona_image_storage import PersonaImageStorage
+
+# Initialize storage instances
+digital_twin_storage = ScalableDigitalTwinStorage()
+digital_twin_search = DigitalTwinSearch()
+persona_image_storage = PersonaImageStorage()
+
+def _extract_persona_summary_from_markdown(markdown_content: str) -> str:
+    """Extract the persona summary section from markdown content"""
+    if not markdown_content:
+        return "No summary available"
+    
+    lines = markdown_content.split('\n')
+    in_summary = False
+    summary_lines = []
+    
+    for line in lines:
+        # Check if we're entering the Persona Summary section
+        if 'Persona Summary' in line or 'persona summary' in line.lower():
+            in_summary = True
+            continue
+        
+        # Check if we're leaving the summary section (next heading)
+        if in_summary and line.strip().startswith('#'):
+            break
+        
+        # Collect summary lines
+        if in_summary and line.strip():
+            summary_lines.append(line.strip())
+    
+    return ' '.join(summary_lines) if summary_lines else "No summary available"
 
 @dataclass
 class SyntheticPersona:
@@ -44,12 +86,116 @@ class SyntheticPersona:
     interaction_history: str
     next_best_actions: str
 
+    markdown: str = ""  # Optional markdown representation of the persona
+
+
+# Async wrapper functions for storage operations
+async def save_digital_twin(lead_id: str, markdown_content: str, classification: Optional[str] = None) -> Dict[str, Any]:
+    """Save a digital twin to Azure storage"""
+    return await digital_twin_storage.save_digital_twin(lead_id, markdown_content, classification)
+
+async def get_digital_twin(lead_id: str) -> Optional[str]:
+    """Get a digital twin from Azure storage"""
+    return await digital_twin_storage.get_digital_twin(lead_id)
+
+async def search_digital_twins(query: str, filters: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    """Search digital twins using Azure AI Search or Cosmos DB"""
+    return digital_twin_search.search_twins(query, filters)
+
+async def save_persona_image(lead_id: str, image_bytes: bytes) -> Dict[str, str]:
+    """Save persona images to Azure Blob Storage"""
+    return await persona_image_storage.save_persona_image(lead_id, image_bytes)
+
+async def get_persona_image(lead_id: str, size: str = "full") -> Optional[bytes]:
+    """Get persona image from Azure Blob Storage"""
+    return await persona_image_storage.get_persona_image(lead_id, size)
 
 #Return a list of synthetic personas from database.
-def get_synthetic_personas() -> List[SyntheticPersona]:
+async def get_synthetic_personas() -> List[SyntheticPersona]:
     """
-    Returns a mock list of synthetic personas with realistic data.
+    Returns a list of synthetic personas from Azure storage or mock data.
     """
+    # Try to get from Azure storage first
+    try:
+        twins = await digital_twin_storage.list_digital_twins(limit=100)
+        
+        if twins:
+            personas = []
+            for twin in twins:
+                twin_meta = twin.get('metadata', {})
+                lead_id = twin.get('id')
+                
+               
+                # Extract data from insurance prospect structure in metadata
+                personal_info = twin_meta.get('personal_information', {})
+                demographic_info = twin_meta.get('demographic_information', {})
+                financial_info = twin_meta.get('financial_information', {})
+                insurance_hist = twin_meta.get('insurance_history', {})
+                
+                # Get persona summary from metadata only (no markdown fetch)
+                persona_summary = twin_meta.get('persona_summary', 'No summary available')
+                
+                # Determine life stage based on age and marital status
+                age_str = personal_info.get('age', 'Unknown')
+                marital_status = demographic_info.get('marital_status', 'Unknown')
+                life_stages = 'Unknown'
+                if age_str != 'Unknown':
+                    try:
+                        age_val = int(age_str) if age_str.isdigit() else int(age_str.split()[0]) if ' ' in age_str else 0
+                        if age_val < 30:
+                            life_stages = 'Early Career' if marital_status == 'Single' else 'Young Family'
+                        elif age_val < 50:
+                            life_stages = 'Mid-Career' if marital_status == 'Single' else 'Established Family'
+                        elif age_val < 65:
+                            life_stages = 'Pre-retirement'
+                        else:
+                            life_stages = 'Retired'
+                    except:
+                        pass
+                
+                # Format insurance history information
+                insurance_history_str = 'Unknown'
+                if insurance_hist:
+                    policies = insurance_hist.get('current_policies', 'Unknown')
+                    needs = insurance_hist.get('current_needs', '')
+                    claims = insurance_hist.get('claims_history', 'Unknown')
+                    insurance_history_parts = []
+                    if policies != 'Unknown':
+                        insurance_history_parts.append(f"Current policies: {policies}")
+                    if needs and needs != 'Unknown':
+                        insurance_history_parts.append(f"Needs: {needs}")
+                    if claims != 'Unknown':
+                        insurance_history_parts.append(f"Claims: {claims}")
+                    if insurance_history_parts:
+                        insurance_history_str = ", ".join(insurance_history_parts)
+                
+                persona = SyntheticPersona(
+                    lead_id=lead_id,
+                    lead_classification=twin_meta.get('lead_classification', 'unknown'),
+                    persona_summary=persona_summary,
+                    profile_image_url="",
+                    full_name="Unknown",
+                    age=personal_info.get('age', 'Unknown'),
+                    marital_status=demographic_info.get('marital_status', 'Unknown'),
+                    dependents='Unknown',
+                    gender=personal_info.get('gender', 'Unknown'),
+                    life_stages=life_stages,
+                    occupation=personal_info.get('occupation', 'Unknown'),
+                    education_level=demographic_info.get('education', 'Unknown'),
+                    annual_income=financial_info.get('annual_income', 'Unknown'),
+                    employment_information=f"{personal_info.get('occupation', 'Unknown')} - {personal_info.get('lead_status', 'Unknown')} lead",
+                    insurance_history=insurance_history_str,
+                    behaioral_signals='Unknown',
+                    interaction_history='Unknown',
+                    next_best_actions='Unknown',
+                    markdown=""  # No markdown content fetched for performance
+                )
+                personas.append(persona)
+            return personas
+    except Exception as e:
+        print(f"Error fetching from Azure storage: {e}")
+    
+    # Fall back to mock data
     import random
     classifications = ["hot", "cold", "warm"]
     mock_personas = [
@@ -177,9 +323,90 @@ def get_synthetic_personas() -> List[SyntheticPersona]:
     return mock_personas
 
 
-def get_synthetic_persona(id: str) -> SyntheticPersona:
-    #Return from get_synthetic_personas
-    personas = get_synthetic_personas()
+async def get_synthetic_persona(id: str) -> SyntheticPersona:
+    """Get a specific synthetic persona by ID"""
+    # Try to get from Azure storage first
+    try:
+        # Get metadata and content
+        twin_meta = await digital_twin_storage.get_digital_twin_metadata(id)
+        if twin_meta:
+            # Check if image exists
+            image_url = f"/persona_image/{id}"
+            
+            # Get the markdown content
+            markdown_content = await digital_twin_storage.get_digital_twin(id) or ""
+            
+            # Extract data from insurance prospect structure in metadata
+            personal_info = twin_meta.get('personal_information', {})
+            demographic_info = twin_meta.get('demographic_information', {})
+            financial_info = twin_meta.get('financial_information', {})
+            insurance_hist = twin_meta.get('insurance_history', {})
+            
+            # Get persona summary from metadata or extract from markdown
+            persona_summary = twin_meta.get('persona_summary', '')
+            if not persona_summary or persona_summary == 'Unknown':
+                persona_summary = _extract_persona_summary_from_markdown(markdown_content)
+            
+            # Determine life stage based on age and marital status
+            age_str = personal_info.get('age', 'Unknown')
+            marital_status = demographic_info.get('marital_status', 'Unknown')
+            life_stages = 'Unknown'
+            if age_str != 'Unknown':
+                try:
+                    age_val = int(age_str) if age_str.isdigit() else int(age_str.split()[0]) if ' ' in age_str else 0
+                    if age_val < 30:
+                        life_stages = 'Early Career' if marital_status == 'Single' else 'Young Family'
+                    elif age_val < 50:
+                        life_stages = 'Mid-Career' if marital_status == 'Single' else 'Established Family'
+                    elif age_val < 65:
+                        life_stages = 'Pre-retirement'
+                    else:
+                        life_stages = 'Retired'
+                except:
+                    pass
+            
+            # Format insurance history information
+            insurance_history_str = 'Unknown'
+            if insurance_hist:
+                policies = insurance_hist.get('current_policies', 'Unknown')
+                needs = insurance_hist.get('current_needs', '')
+                claims = insurance_hist.get('claims_history', 'Unknown')
+                insurance_history_parts = []
+                if policies != 'Unknown':
+                    insurance_history_parts.append(f"Current policies: {policies}")
+                if needs and needs != 'Unknown':
+                    insurance_history_parts.append(f"Needs: {needs}")
+                if claims != 'Unknown':
+                    insurance_history_parts.append(f"Claims: {claims}")
+                if insurance_history_parts:
+                    insurance_history_str = ", ".join(insurance_history_parts)
+            
+            return SyntheticPersona(
+                lead_id=id,
+                lead_classification=twin_meta.get('lead_classification', 'unknown'),
+                persona_summary=persona_summary,
+                profile_image_url=image_url,
+                full_name="Unknown",
+                age=personal_info.get('age', 'Unknown'),
+                marital_status=demographic_info.get('marital_status', 'Unknown'),
+                dependents='Unknown',
+                gender=personal_info.get('gender', 'Unknown'),
+                life_stages=life_stages,
+                occupation=personal_info.get('occupation', 'Unknown'),
+                education_level=demographic_info.get('education', 'Unknown'),
+                annual_income=financial_info.get('annual_income', 'Unknown'),
+                employment_information=f"{personal_info.get('occupation', 'Unknown')} - {personal_info.get('lead_status', 'Unknown')} lead",
+                insurance_history=insurance_history_str,
+                behaioral_signals='Unknown',
+                interaction_history='Unknown',
+                next_best_actions='Unknown',
+                markdown=markdown_content
+            )
+    except Exception as e:
+        print(f"Error fetching from Azure storage: {e}")
+    
+    # Fall back to mock data search
+    personas = await get_synthetic_personas()
     for persona in personas:
         if persona.lead_id == id:
             return persona

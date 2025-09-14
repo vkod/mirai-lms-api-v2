@@ -14,6 +14,15 @@ class AgentInputType:
     name: str
 
 @dataclass
+class AgentOutputType:
+    """
+    A class representing the output type for an agent.
+    """
+    output_desc: str
+    output_type: Literal["markdown","textarea","image_id"]
+    name: str
+
+@dataclass
 class Agent:
     """
     A data class representing an AI agent with its core attributes and metrics.
@@ -47,7 +56,8 @@ def get_agents_list() -> List[Agent]:
             AgentInputType(input_desc="Website traffic data", input_type="textarea", name="data"),
             AgentInputType(input_desc="Existing Digital twin if any", input_type="textarea", name="existing_digital_twin")
         ],
-        outputs=["Updated/New Digital twin"],
+        outputs=[AgentOutputType(output_desc="Updated/New Digital twin", output_type="markdown", name="digital_twin"),
+                 AgentOutputType(output_desc="Execution cost", output_type="label", name="execution_cost")],
         metrics={"Data processed": 100, "Digital twins created": 78, "Digital twins updated": 23, "Cost this month": 20000},
         endpoint_for_testing="test_digital_twin_agent"
     )
@@ -57,11 +67,12 @@ def get_agents_list() -> List[Agent]:
         version="1.0",
         goal="Generate image of digital twin based on persona",
         inputs=[
-            AgentInputType(input_desc="Digital Twin profile", input_type="textarea", name="digital_twin_profile")
+            AgentInputType(input_desc="Digital Twin profile", input_type="textarea", name="persona")
         ],
-        outputs=["Digital Twin image"],
+        outputs=[AgentOutputType(output_desc="Generated image", output_type="image_id", name="generated_image_id"),
+                 AgentOutputType(output_desc="Execution cost", output_type="label", name="execution_cost")],
         metrics={"Photos generated": 34, "Cost this month": 20000},
-        endpoint_for_testing="lead_image_generation_agent"
+        endpoint_for_testing="test_lead_image_generation_agent"
     )
     return [digitalTwinAgent,leadImageGenerationAgent]
 

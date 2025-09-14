@@ -1,13 +1,23 @@
+import uuid
 import dspy
 import os
+import sys
 import pandas as pd
+import hashlib
+import asyncio
 from dspy.teleprompt import BootstrapFewShotWithRandomSearch
+from agent_dojo.agents.DigitalTwinCreatorAgent.InsuranceProspectModel import InsuranceProspect
 from agent_dojo.tools.file_utils import get_optimized_program_file_directory, get_training_set_directory
 from agent_dojo.tools.lmtools import log_lm_execution_cost
 from typing import Any,Literal
 
 from dotenv import load_dotenv
 load_dotenv()
+
+# Add parent directories to path for storage imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+from storage.digital_twin_storage import ScalableDigitalTwinStorage
+from utils.async_helper import run_async
 
 #dspy.settings.configure( track_usage=True )
 
@@ -27,33 +37,44 @@ load_dotenv()
 
 TEST_SET="lead_personas_dataset_v6_10records_detailed_existing.csv"
 
-reflection_model=dspy.LM(model="gpt-4.1", temperature=1.0, max_tokens=32000)
+reflection_model=dspy.LM(model="openai/gpt-4.1-mini", temperature=1.0, max_tokens=32000)
 model_for_optimization=dspy.LM('openai/gpt-4.1-mini',temperature=1.0, max_tokens=16000)
-model_for_execution=dspy.LM(os.getenv('GROQ_LLAMA_MODEL', 'openai/gpt-4.1-mini'),temperature=1.0, max_tokens=16000)
+model_for_execution=dspy.LM('openai/gpt-4.1-mini',temperature=1.0, max_tokens=16000)
 
 
 class ExtractDigitalTwinSig(dspy.Signature):
     """Create an imaginary persona based on data provided and update the digital twin with data as much as possible.
+    digital_twin should contain sections: Persona Summary, Personal Information, Demographic Information, Financial Information, Insurance Needs.
     If existing_digital_twin information is provided, update it with new or changed information based on clear signals in data"""
     data: str = dspy.InputField()
     existing_digital_twin:str = dspy.InputField()
     digital_twin: str = dspy.OutputField(desc="markdown-formatted")
 
 class ClassifyLeadSig(dspy.Signature):
-    """Classify the lead based on the digital twin information"""
+    """Classify the lead based on the digital twin information. Keep it cold if you don't have strong signals of interest or intent."""
     digital_twin: str = dspy.InputField()
     lead_classification: Literal["hot", "warm", "cold"] = dspy.OutputField()
+
+
+class InsuranceProspectSig(dspy.Signature):
+    """Extract insurance_prospect information from the digital twin"""
+    digital_twin: str = dspy.InputField()
+    insurance_prospect: InsuranceProspect = dspy.OutputField()
 
 class DigitalTwinCreatorAgent(dspy.Module):
     def __init__(self):
         super().__init__()
         self.perform_digital_twin_extraction = dspy.ChainOfThought(ExtractDigitalTwinSig)
         self.classify_lead = dspy.ChainOfThought(ClassifyLeadSig)
+        self.extract_insurance_prospect = dspy.ChainOfThought(InsuranceProspectSig)
 
     def forward(self, data,existing_digital_twin):
         digital_twin = self.perform_digital_twin_extraction(data=data,existing_digital_twin=existing_digital_twin).digital_twin
         lead_classification = self.classify_lead(digital_twin=digital_twin).lead_classification
-        return dspy.Prediction(digital_twin=digital_twin, lead_classification=lead_classification)
+        insurance_prospect = self.extract_insurance_prospect(digital_twin=digital_twin).insurance_prospect
+        insurance_prospect.lead_classification = lead_classification
+       
+        return dspy.Prediction(digital_twin=digital_twin, insurance_prospect=insurance_prospect)
 
 class AssessDigitalTwinQualitySig(dspy.Signature):
     """Assess the quality of digital twin text created"""
@@ -68,14 +89,77 @@ class AssessUpdateToDigitalTwinSig(dspy.Signature):
     assessment_question = dspy.InputField()
     assessment_answer: bool = dspy.OutputField()
 
+class CompareCreatedWithExampleDigitalTwinSig(dspy.Signature):
+    """Compare the created digital twin with the example digital twin provided. If the created digital twin looks like the example digital twin, return True, else return False."""
+    example_digital_twin = dspy.InputField()
+    created_digital_twin = dspy.InputField()
+    looks_similar: bool = dspy.OutputField()
+
+class AssessDigitalTwinQuality(dspy.Signature):
+    """Assess the quality of digital twin text created"""
+    assessed_text = dspy.InputField()
+    assessment_question = dspy.InputField()
+    assessment_answer: bool = dspy.OutputField()
+
+class AssessUpdateToDigitalTwin(dspy.Signature):
+    """Assess if the updates made to the digitial twin are good"""
+    existing_digital_twin = dspy.InputField()
+    digital_twin = dspy.InputField()
+    assessment_question = dspy.InputField()
+    assessment_answer: bool = dspy.OutputField()
+
+
+def _metric_for_bootstrapfewshot(example,pred,trace=None):
+    
+    with dspy.context(lm=reflection_model):
+
+        digital_twin = pred.digital_twin
+        assessment_question = "Does the assessed text have enough information captured to act as a digital twin of a lead?"
+        enough_information = dspy.Predict(AssessDigitalTwinQuality)(assessed_text=digital_twin, assessment_question=assessment_question)
+
+        digital_twin_update_good=False
+
+        #For some reason existing_digital_twin is sometimes float
+        if isinstance(example.existing_digital_twin, float):
+            example.existing_digital_twin = str(example.existing_digital_twin)
+
+        if example.existing_digital_twin!='nan' and example.existing_digital_twin.strip()!="":
+            assessment_question = "Are the updates made to the digital twin good and relevant?"
+            digital_twin_update_good = dspy.Predict(AssessUpdateToDigitalTwin)(existing_digital_twin=example.existing_digital_twin, digital_twin=digital_twin, assessment_question=assessment_question).assessment_answer
+        else:
+            digital_twin_update_good=True
+
+        #Search digital_twin text to make sure it has "Financial Information", "Occupation", "Annual Income", "Persona Summary"
+        contains_key_sections=False
+
+        if "Persona Summary" in digital_twin and "Personal Information" in digital_twin and "Demographic Information" in digital_twin and "Financial Information" in digital_twin and "Insurance Needs" in digital_twin:
+            contains_key_sections=True
+
+        #Print all three values
+        print(f"enough_information: {enough_information.assessment_answer}, contains_key_sections: {contains_key_sections}, digital_twin_update_good: {digital_twin_update_good}")
+        score=enough_information.assessment_answer + contains_key_sections + digital_twin_update_good
+
+        if trace is not None: return score>=3
+        return score/3.0
+
+def optimize_using_bootstrapfewshot():
+    test_set, _  = _load_test_set(TEST_SET, __file__)
+    with dspy.context(lm=model_for_optimization):
+        program = DigitalTwinCreatorAgent()
+        config = dict(max_bootstrapped_demos=2, max_labeled_demos=2, num_candidate_programs=2, num_threads=2)
+        optimizer = BootstrapFewShotWithRandomSearch(metric=_metric_for_bootstrapfewshot, **config)
+        optimized_program = optimizer.compile(program, trainset=test_set)
+        _save_optimized_program(optimized_program, __file__)
+
 def _metric(example,pred,trace=None):
     digital_twin = pred.digital_twin
-    assessment_question = "Does the assessed text have enough information captured to act as a digital twin of a lead?"
-    enough_information = dspy.Predict(AssessDigitalTwinQualitySig)(assessed_text=digital_twin, assessment_question=assessment_question)
+    #assessment_question = "Does the assessed text have enough information captured to act as a digital twin of a lead?"
+    #enough_information = dspy.Predict(AssessDigitalTwinQualitySig)(assessed_text=digital_twin, assessment_question=assessment_question)
 
+    looks_like_digital_twin=dspy.Predict(CompareCreatedWithExampleDigitalTwinSig)(example_digital_twin=example.digital_twin, created_digital_twin=digital_twin).looks_similar
 
-    assessment_question = "Is the assessed text in markdown format?"
-    is_in_markdown_format = dspy.Predict(AssessDigitalTwinQualitySig)(assessed_text=digital_twin, assessment_question=assessment_question).assessment_answer
+    #assessment_question = "Is the assessed text in markdown format?"
+    #is_in_markdown_format = dspy.Predict(AssessDigitalTwinQualitySig)(assessed_text=digital_twin, assessment_question=assessment_question).assessment_answer
 
     digital_twin_update_good=False
 
@@ -95,30 +179,21 @@ def _metric(example,pred,trace=None):
         contains_key_sections=True
 
     #Print all three values
-    print(f"enough_information: {enough_information.assessment_answer}, contains_key_sections: {contains_key_sections}, digital_twin_update_good: {digital_twin_update_good}")
-    score=enough_information.assessment_answer + contains_key_sections + digital_twin_update_good + is_in_markdown_format
+    print(f" contains_key_sections: {contains_key_sections}, digital_twin_update_good: {digital_twin_update_good}, looks_like_digital_twin: {looks_like_digital_twin}")
+    score=contains_key_sections + digital_twin_update_good +  looks_like_digital_twin
 
     #if trace is not None: return score>=3
-    #return score/4.0
+    #return score/5.0
     return dspy.Prediction(
         score=score,
-        enough_information=enough_information.assessment_answer,
         contains_key_sections=contains_key_sections,
         digital_twin_update_good=digital_twin_update_good,
-        is_in_markdown_format=is_in_markdown_format
+        looks_like_digital_twin=looks_like_digital_twin,
     )
 
-def _simple_metric(example,pred,trace=None):
-    digital_twin = pred.digital_twin
-    
-    contains_key_sections=False
-    if "Financial Information" in digital_twin and "Occupation" in digital_twin and "Annual Income" in digital_twin and "Persona Summary" in digital_twin:
-        contains_key_sections=True
-
-    return contains_key_sections
 
 def optimize():
-    optimize_using_gepa()
+    optimize_using_bootstrapfewshot()
 
 
 def _load_test_set(csv_filename, caller_file):
@@ -128,7 +203,12 @@ def _load_test_set(csv_filename, caller_file):
         dspy.Example(data=row['data'], existing_digital_twin=row['existing_digital_twin'], digital_twin=row['digital_twin']).with_inputs("data", "existing_digital_twin")
         for _, row in df.iterrows()
     ]
-    return test_set
+
+    #Return about 80% records as test_set and rest as val_set
+    split_index = int(0.6 * len(test_set))
+    val_set = test_set[split_index:]
+    test_set = test_set[:split_index]
+    return test_set, val_set
 
 def _save_optimized_program(optimized_program, caller_file):
     optimized_program_file_dir = get_optimized_program_file_directory(caller_file)
@@ -137,72 +217,48 @@ def _save_optimized_program(optimized_program, caller_file):
         save_program=True
     )
 
-def optimize_using_bootstrapfewshot():
-    test_set = _load_test_set(TEST_SET, __file__)
-    lm=model_for_optimization
-    with dspy.context(lm=lm):
-        program = DigitalTwinCreatorAgent()
-        config = dict(max_bootstrapped_demos=4, max_labeled_demos=4, num_candidate_programs=2, num_threads=1)
-        optimizer = BootstrapFewShotWithRandomSearch(metric=_simple_metric, **config)
-        optimized_program = optimizer.compile(program, trainset=test_set)
-        _save_optimized_program(optimized_program, __file__)
-        log_lm_execution_cost(lm,"optimize_using_bootstrapfewshot")
-
-def optimize_using_miprov2():
-    test_set = _load_test_set(TEST_SET, __file__)
-    with dspy.context(lm=model_for_optimization):
-        program = DigitalTwinCreatorAgent()
-        optimizer = dspy.MIPROv2(metric=_simple_metric, auto="light",num_threads=1)
-        optimized_program = optimizer.compile(program, trainset=test_set)
-        _save_optimized_program(optimized_program, __file__)
-
-def optimize_using_simba():
-    test_set = _load_test_set(TEST_SET, __file__)
-    with dspy.context(lm=model_for_optimization):
-        program = DigitalTwinCreatorAgent()
-        config = dict(num_candidate_programs=2, num_threads=1)
-        optimizer = dspy.SIMBA(metric=_simple_metric, )
-        optimized_program = optimizer.compile(program, trainset=test_set)
-        _save_optimized_program(optimized_program, __file__)
 
 def _compute_score_with_feedback(gold, pred, trace=None, pred_name=None, pred_trace=None):
 
     metrics= _metric(gold, pred, trace)
     feedback_text = ""
-    if metrics.score==4:
+    if metrics.score==3:
         if gold.existing_digital_twin!='nan' and gold.existing_digital_twin.strip()!="":
             feedback_text = "The digital twin created is of high quality based on three criteria: enough information to act as a digital twin, contains key sections, and good updates to existing digital twin."
         else:
             feedback_text = "The digital twin created is of high quality based on two criteria: enough information to act as a digital twin, and contains key sections."
     
-    if metrics.enough_information==False:
-        feedback_text = f"The digital twin created did not have enough information to act as a digital twin. The score is {metrics.score}/4.0."
+    #if metrics.enough_information==False:
+    #    feedback_text = f"The digital twin created did not have enough information to act as a digital twin. The score is {metrics.score}/5.0."
 
-    if metrics.is_in_markdown_format==False:
-        feedback_text = f"The digital twin created is not in markdown format. The score is {metrics.score}/4.0. The digital twin should be in markdown format."
+    #if metrics.is_in_markdown_format==False:
+    #    feedback_text = f"The digital twin created is not in markdown format. The score is {metrics.score}/5.0. The digital twin should be in markdown format."
 
     if metrics.contains_key_sections==False:
-        feedback_text = f"The digital twin created did not contain key sections. The score is {metrics.score}/4.0. Digital twin should contain 'Financial Information', 'Occupation', 'Annual Income' and 'Persona Summary'"
+        feedback_text = f"The digital twin created did not contain key sections. The score is {metrics.score}/3.0. Digital twin should contain 'Financial Information', 'Occupation', 'Annual Income' and 'Persona Summary'"
 
     if metrics.digital_twin_update_good==False:
-        feedback_text = f"The updates made to the existing digital twin were not good and relevant. The score is {metrics.score}/4.0."
+        feedback_text = f"The updates made to the existing digital twin were not good and relevant. The score is {metrics.score}/3.0."
+
+    if metrics.looks_like_digital_twin==False:
+        feedback_text = f"The digital twin created does not look like the example digital twin provided. The score is {metrics.score}/3.0."
 
     return dspy.Prediction(
-        score=metrics.score/4.0,
+        score=metrics.score/3.0,
         feedback=feedback_text,
     )
 
 def optimize_using_gepa():
-    test_set = _load_test_set(TEST_SET, __file__)
+    test_set, val_set = _load_test_set(TEST_SET, __file__)
     with dspy.context(lm=model_for_optimization):
         program = DigitalTwinCreatorAgent()
-        optimizer = dspy.GEPA(metric=_compute_score_with_feedback,  num_threads=4, track_stats=True, track_best_outputs=True, reflection_lm=reflection_model,max_full_evals=15)
+        optimizer = dspy.GEPA(metric=_compute_score_with_feedback, use_merge=False, num_threads=2, reflection_lm=reflection_model,max_full_evals=2)
         optimized_program = optimizer.compile(program, trainset=test_set)
         _save_optimized_program(optimized_program, __file__)
         log_lm_execution_cost(model_for_optimization,"optimize_using_gepa_metrics")
         log_lm_execution_cost(reflection_model,"optimize_using_gepa_reflection")
 
-def run(data, existing_digital_twin=None):
+def run(data, existing_digital_twin=None, lead_id=None) -> Any:
     agent = DigitalTwinCreatorAgent()
     optimized_program_file_dir = get_optimized_program_file_directory(__file__)
     optimized_program_file = os.path.join(optimized_program_file_dir, 'DigitalTwinCreatorAgent_Optimized')
@@ -216,6 +272,49 @@ def run(data, existing_digital_twin=None):
     with dspy.context(lm=lm):
         output = agent(data=data, existing_digital_twin=existing_digital_twin)
         #print(output.get_lm_usage())
-        log_lm_execution_cost(lm,"DigitalTwinCreatorAgent")
+        execution_cost=log_lm_execution_cost(lm,"DigitalTwinCreatorAgent")
 
-    return output.digital_twin
+        # Store the digital twin to Azure storage
+        digital_twin_content = output.digital_twin
+        
+        return {
+            "digital_twin": digital_twin_content,
+            "lead_classification": None,  # output.insurance_prospect.lead_classification if hasattr(output, 'insurance_prospect') else None,
+            "lead_id": lead_id,
+            "execution_cost": execution_cost,
+            "insurance_prospect": output.insurance_prospect if hasattr(output, 'insurance_prospect') else None
+        }
+    
+
+
+def create(data, existing_digital_twin=None, lead_id=None) -> Any:
+    # Generate lead_id if not provided
+    if not lead_id:
+        lead_id = str(uuid.uuid4())
+
+    output=run(data, existing_digital_twin, lead_id)
+    output["lead_id"]=lead_id
+    # Store the digital twin to Azure storage
+    digital_twin_content = output["digital_twin"]
+    
+    # Store to Azure storage
+    try:
+        storage = ScalableDigitalTwinStorage()
+        insurance_prospect=output["insurance_prospect"] if "insurance_prospect" in output else None
+        insurance_prospect.id=lead_id
+        # Save or update the digital twin
+        run_async(
+            storage.save_digital_twin(
+                lead_id=lead_id,
+                markdown=digital_twin_content,
+                insurance_prospect=insurance_prospect,
+            )
+        )
+        
+        print(f"Digital twin saved to Azure storage with lead_id: {lead_id}")
+
+        return output
+       
+    except Exception as e:
+        print(f"Warning: Could not save to Azure storage: {e}")
+        
