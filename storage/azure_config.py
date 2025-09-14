@@ -36,6 +36,7 @@ class AzureStorageConfig:
     def _init_cosmos_db(self):
         endpoint = os.getenv("COSMOS_ENDPOINT")
         key = os.getenv("COSMOS_KEY")
+        print(f"Cosmos Endpoint: {endpoint}, Key: {key if key else None}")
         if endpoint and key:
             self.cosmos_client = CosmosClient(url=endpoint, credential=key)
             self._ensure_database_exists()
