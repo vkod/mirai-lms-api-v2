@@ -3,19 +3,16 @@ Centralized async utility module to handle async operations
 in both sync and async contexts without event loop conflicts.
 """
 import asyncio
-import nest_asyncio
 from typing import Any, Coroutine, TypeVar
 import sys
-
-# Apply nest_asyncio to allow nested event loops
-nest_asyncio.apply()
 
 T = TypeVar('T')
 
 def run_async(coro: Coroutine[Any, Any, T]) -> T:
     """
     Run an async function from a synchronous context.
-    Handles the case where an event loop is already running (e.g., in FastAPI/Jupyter).
+    NOTE: This will fail if called from within an already running event loop.
+    Use await directly in async contexts instead.
     
     Args:
         coro: The coroutine to run
@@ -24,11 +21,13 @@ def run_async(coro: Coroutine[Any, Any, T]) -> T:
         The result of the coroutine
     """
     try:
-        # Try to get the current event loop
-        loop = asyncio.get_running_loop()
-        # If we're in an async context (loop is running), use nest_asyncio
-        # Create a new task and run it
-        return loop.run_until_complete(coro)
+        # Check if an event loop is already running
+        asyncio.get_running_loop()
+        # If we reach here, we're in an async context
+        raise RuntimeError(
+            "Cannot use run_async() from within an async context. "
+            "Use 'await' directly instead."
+        )
     except RuntimeError:
         # No event loop is running, we can use asyncio.run()
         return asyncio.run(coro)
