@@ -11,8 +11,8 @@ def main():
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Process personas and call digital twin agent API')
     parser.add_argument('--csv-path', default='personas.csv', help='Path to the CSV file')
-    parser.add_argument('--api-url', default='http://localhost:8000/create_digital_twin_agent', help='URL of the API endpoint')
-    parser.add_argument('--limit', type=int, default=5, help='Limit the number of rows to process (for testing)')
+    parser.add_argument('--api-url', default='https://mirai-lms-api.azurewebsites.net/create_digital_twin_agent', help='URL of the API endpoint')
+    parser.add_argument('--limit', type=int, default=10, help='Limit the number of rows to process (for testing)')
     args = parser.parse_args()
 
     csv_path = args.csv_path
