@@ -17,6 +17,7 @@ import os
 import asyncio
 from flask import  jsonify, request, abort
 from datetime import datetime
+import secrets
 
 # Initialize storage instances
 persona_image_storage = PersonaImageStorage()
@@ -144,23 +145,45 @@ def test_lead_image_generation_agent(payload: PersonaImagePayload):
 
     return PersonaImageGenerationAgent.run(payload.persona, lead_id=lead_id)
 
-history=dspy.History(messages=[])
+chat_sessions: dict[str, dspy.History] = {}
+
+def get_or_create_history(session_id: str | None) -> tuple[str, dspy.History]:
+    if not session_id:
+        session_id = secrets.token_urlsafe(12)
+    hist = chat_sessions.get(session_id)
+    if hist is None:
+        hist = dspy.History(messages=[])
+        chat_sessions[session_id] = hist
+    return session_id, hist
 
 @app.post("/chat_with_synthetic_persona/{lead_id}")
-async def chat_with_synthetic_persona(lead_id: str, payload: QuestionPayload):
-    # Try to get persona from Azure storage
+async def chat_with_synthetic_persona(lead_id: str, payload: QuestionPayload, session_id: str | None = None):
+    session_id, history = get_or_create_history(session_id)
     persona = await digital_twin_storage.get_digital_twin(lead_id)
     if not persona:
-        persona = PERSONA  # Fall back to default
+        persona = PERSONA
     answer = SyntheticPersonChatAgent.run(payload.question, history, persona)
     history.messages.append({"question": payload.question, "answer": answer})
-    return answer
+    return {
+        "answer": answer,
+        "session_id": session_id,
+        "messages": history.messages
+    }
 
 @app.post("/test_synthetic_person_chat_agent")
-def test_synthetic_person_chat_agent(payload: QuestionPayload):
-    answer = SyntheticPersonChatAgent.run(question=payload.question, history=dspy.History(messages=[]), persona=payload.persona)
+def test_synthetic_person_chat_agent(payload: QuestionPayload, session_id: str | None = None):
+    session_id, history = get_or_create_history(session_id)
+    answer = SyntheticPersonChatAgent.run(
+        question=payload.question,
+        history=history,
+        persona=payload.persona
+    )
     history.messages.append({"question": payload.question, "answer": answer})
-    return answer
+    return {
+        "answer": answer,
+        "session_id": session_id,
+        "messages": history.messages
+    }
 
 # New API endpoints for Azure storage
 @app.post("/search_digital_twins")
