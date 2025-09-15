@@ -3,6 +3,7 @@ fastapi
 uvicorn[standard]
 sqlmodel
 python-multipart
+websockets
 
 # Azure Storage SDKs
 azure-storage-blob==12.19.0
@@ -25,5 +26,11 @@ python-dotenv
 
 # Async utilities
 nest-asyncio
+
+# Voice Chat and WebRTC dependencies
+openai>=1.0.0
+numpy
+wave
+aiortc  # For advanced WebRTC support (optional)
 
 

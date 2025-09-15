@@ -1,6 +1,6 @@
 import uuid
 import dspy
-from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks, Response
+from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks, Response, WebSocket
 from fastapi.responses import FileResponse
 from agent_dojo.tools.file_utils import get_persona_photographs_directory
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,15 +12,20 @@ from agent_dojo.agents.SurveyResponseAgent import SurveyResponseAgent
 from storage.persona_image_storage import PersonaImageStorage
 from storage.digital_twin_storage import ScalableDigitalTwinStorage
 from storage.digital_twin_search import DigitalTwinSearch
+from voice_chat.voice_chat_manager import create_realtime_session
 import os
 import asyncio
+from flask import  jsonify, request, abort
+from datetime import datetime
 
 # Initialize storage instances
 persona_image_storage = PersonaImageStorage()
 digital_twin_storage = ScalableDigitalTwinStorage()
 digital_twin_search = DigitalTwinSearch()
 
-app = FastAPI(title="Mirai LMS API", version="2.0.0")
+
+
+app = FastAPI(title="Mirai LMS API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -35,6 +40,7 @@ from typing import List
 
 class QuestionPayload(BaseModel):
     question: str
+    persona: str = None
 
 class DigitalTwinInputPayload(BaseModel):
     data: str
@@ -61,6 +67,7 @@ class ImageSurveyPayload(BaseModel):
 class PersonaImagePayload(BaseModel):
     persona: str
     lead_id: str = None
+
 
 @app.get("/")
 async def root():
@@ -146,6 +153,12 @@ async def chat_with_synthetic_persona(lead_id: str, payload: QuestionPayload):
     if not persona:
         persona = PERSONA  # Fall back to default
     answer = SyntheticPersonChatAgent.run(payload.question, history, persona)
+    history.messages.append({"question": payload.question, "answer": answer})
+    return answer
+
+@app.post("/test_synthetic_person_chat_agent")
+def test_synthetic_person_chat_agent(payload: QuestionPayload):
+    answer = SyntheticPersonChatAgent.run(question=payload.question, history=dspy.History(messages=[]), persona=payload.persona)
     history.messages.append({"question": payload.question, "answer": answer})
     return answer
 
@@ -330,6 +343,40 @@ async def optimize_survey_response_agent(background_tasks: BackgroundTasks):
     """Optimize the Survey Response Agent (requires training data)"""
     background_tasks.add_task(SurveyResponseAgent.optimize)
     return {"message": "Survey Response Agent optimization started in the background"}
+
+    
+
+class RealtimeSessionRequest(BaseModel):
+    persona_id: str | None = None
+
+class RealtimeSessionResponse(BaseModel):
+    session_id: str
+    client_secret: str
+    expires_at: datetime
+# ...existing code...
+
+# REMOVE the old Flask-style endpoint and add this FastAPI one:
+@app.post("/realtime/session", response_model=RealtimeSessionResponse)
+async def issue_session(payload: RealtimeSessionRequest):
+
+    #Get persona markdown for the user_id if provided
+    if payload.persona_id:
+        from digital_twins.digital_twin_management import get_synthetic_persona
+        persona_data = await get_synthetic_persona(payload.persona_id)
+        if persona_data:
+            persona = persona_data.persona_summary
+            created = create_realtime_session(persona=persona, markdown=persona_data.markdown, gender=persona_data.gender)
+            return RealtimeSessionResponse(
+                session_id=created.id,
+                client_secret=created.client_secret,
+                expires_at=created.expires_at
+            )
+        else:
+            #Throw error if persona_id not found
+            raise HTTPException(status_code=404, detail="Persona ID not found")
+
+
+
 
 if __name__ == "__main__":
     import uvicorn

@@ -58,7 +58,7 @@ def get_agents_list() -> List[Agent]:
         ],
         outputs=[AgentOutputType(output_desc="Updated/New Digital twin", output_type="markdown", name="digital_twin"),
                  AgentOutputType(output_desc="Execution cost", output_type="label", name="execution_cost")],
-        metrics={"Data processed": 100, "Digital twins created": 78, "Digital twins updated": 23, "Cost this month": 20000},
+        metrics={"Data processed": 100, "Digital twins created": 78, "Digital twins updated": 23, "Cost this month": "$100"},
         endpoint_for_testing="test_digital_twin_agent"
     )
     leadImageGenerationAgent = Agent(
@@ -71,10 +71,24 @@ def get_agents_list() -> List[Agent]:
         ],
         outputs=[AgentOutputType(output_desc="Generated image", output_type="image_id", name="generated_image_id"),
                  AgentOutputType(output_desc="Execution cost", output_type="label", name="execution_cost")],
-        metrics={"Photos generated": 34, "Cost this month": 20000},
+        metrics={"Photos generated": 34, "Cost this month": "$50"},
         endpoint_for_testing="test_lead_image_generation_agent"
     )
-    return [digitalTwinAgent,leadImageGenerationAgent]
+    syntheticPersonChatAgent = Agent(
+        id= "synthetic_person_chat_agent",
+        name="Prospect Digital Twin Agent",
+        version="1.0",
+        goal="Assumes persona of the 'persona' provided. Answer insurance agent's questions.",
+        inputs=[
+            AgentInputType(input_desc="Persona profile", input_type="textarea", name="persona"),
+            AgentInputType(input_desc="Question from insurance agent", input_type="textbox", name="question")
+        ],
+        outputs=[AgentOutputType(output_desc="Answer", output_type="textarea", name="answer")],
+        metrics={"Questions answered": 150,  "Cost this month": "$10"},
+        endpoint_for_testing="test_synthetic_person_chat_agent"
+    )
+     #Return list of agents
+    return [digitalTwinAgent,leadImageGenerationAgent, syntheticPersonChatAgent]
 
 
 def get_agent(id: str) -> Agent:
