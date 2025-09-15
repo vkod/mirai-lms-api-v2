@@ -340,16 +340,14 @@ Connect via WebSocket for bidirectional communication.
    - Return session ID immediately
 
 2. **Asynchronous Processing**
-   - Each prospect agent processes the question independently
+   - Each prospect agent (SyntheticPersonChatAgent) processes the question independently
    - Responses are saved as they complete
    - Status updates to `in_progress` after first response
    - Generate summary when all responses received
    - Update status to `completed`
 
 3. **Real-time Updates**
-   - Use Redis Pub/Sub or similar for event broadcasting
    - SSE connection for one-way updates (recommended)
-   - WebSocket for bidirectional communication if needed
 
 ### Error Handling
 ```python
@@ -365,28 +363,3 @@ class APIError(BaseModel):
 # - QUOTA_EXCEEDED: User has exceeded Q&A quota
 # - PROCESSING_ERROR: Error during AI processing
 ```
-
-### Rate Limiting
-- Submit Question: 10 requests per minute per user
-- Get Sessions List: 30 requests per minute
-- SSE Connections: Max 5 concurrent connections per user
-
-### Data Retention
-- Active sessions: Kept indefinitely
-- Completed sessions: Archived after 90 days
-- Responses: Kept for audit trail (anonymized after 1 year)
-
-### Security Considerations
-1. Authenticate all API requests
-2. Validate user has access to specified prospects
-3. Sanitize question text to prevent injection
-4. Limit image upload size (max 5MB)
-5. Rate limit to prevent abuse
-6. Encrypt sensitive prospect data at rest
-
-### Performance Optimization
-1. Cache frequently accessed sessions
-2. Use database indexes on session_id, status, created_at
-3. Implement pagination for all list endpoints
-4. Consider using GraphQL for flexible data fetching
-5. Queue processing for scalability

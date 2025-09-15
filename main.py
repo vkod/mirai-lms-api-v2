@@ -12,7 +12,17 @@ from agent_dojo.agents.SurveyResponseAgent import SurveyResponseAgent
 from storage.persona_image_storage import PersonaImageStorage
 from storage.digital_twin_storage import ScalableDigitalTwinStorage
 from storage.digital_twin_search import DigitalTwinSearch
+from storage.qa_session_storage import QASessionStorage
 from voice_chat.voice_chat_manager import create_realtime_session
+from services.qa_service import QAService
+from models.qa_models import (
+    QuestionSubmitRequest, QuestionSubmitResponse,
+    SessionListRequest, SessionListResponse,
+    QuestionSession, ResponsesListResponse,
+    CancelSessionResponse, RegenerateSummaryRequest,
+    SessionSummary, SessionStatus, ResponseUpdateNotification
+)
+import json
 import os
 import asyncio
 from flask import  jsonify, request, abort
@@ -23,6 +33,8 @@ import secrets
 persona_image_storage = PersonaImageStorage()
 digital_twin_storage = ScalableDigitalTwinStorage()
 digital_twin_search = DigitalTwinSearch()
+qa_session_storage = QASessionStorage()
+qa_service = QAService()
 
 
 
@@ -37,7 +49,8 @@ app.add_middleware(
 )
 
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
+from fastapi.responses import StreamingResponse
 
 class QuestionPayload(BaseModel):
     question: str
@@ -369,6 +382,185 @@ async def optimize_survey_response_agent(background_tasks: BackgroundTasks):
 
     
 
+# Q&A Feature Endpoints
+
+@app.post("/api/v1/qa/sessions", response_model=QuestionSubmitResponse)
+async def submit_qa_session(request: QuestionSubmitRequest):
+    """Submit a new question to selected prospects"""
+    try:
+        return await qa_service.submit_question(request)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+@app.get("/api/v1/qa/sessions")
+async def list_qa_sessions(
+    status_filter: Optional[str] = None,
+    prospect_id: Optional[str] = None,
+    date_from: Optional[datetime] = None,
+    date_to: Optional[datetime] = None,
+    search_query: Optional[str] = None,
+    page: int = 1,
+    page_size: int = 20,
+    sort_by: str = "created_at",
+    sort_order: str = "desc"
+):
+    """Get a paginated list of Q&A sessions with filtering options"""
+    try:
+        # Parse status filter if provided
+        status_list = None
+        if status_filter:
+            status_list = [SessionStatus(s) for s in status_filter.split(',')]
+
+        result = qa_session_storage.list_sessions(
+            status_filter=status_list,
+            prospect_id=prospect_id,
+            date_from=date_from,
+            date_to=date_to,
+            search_query=search_query,
+            page=page,
+            page_size=page_size,
+            sort_by=sort_by,
+            sort_order=sort_order
+        )
+
+        return SessionListResponse(**result)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/v1/qa/sessions/{session_id}", response_model=QuestionSession)
+async def get_qa_session_details(session_id: str):
+    """Get detailed information about a specific Q&A session"""
+    session = qa_session_storage.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    return session
+
+@app.get("/api/v1/qa/sessions/{session_id}/responses", response_model=ResponsesListResponse)
+async def get_session_responses(session_id: str, since_timestamp: Optional[datetime] = None):
+    """Get all responses for a specific session"""
+    session = qa_session_storage.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    responses = qa_session_storage.get_responses(session_id, since_timestamp)
+
+    return ResponsesListResponse(
+        session_id=session_id,
+        responses=responses,
+        total_responded=len(responses),
+        total_expected=session.total_expected,
+        is_complete=session.status == SessionStatus.COMPLETED,
+        summary=session.summary
+    )
+
+@app.post("/api/v1/qa/sessions/{session_id}/cancel", response_model=CancelSessionResponse)
+async def cancel_qa_session(session_id: str):
+    """Cancel an ongoing Q&A session"""
+    success = qa_session_storage.cancel_session(session_id)
+    if not success:
+        raise HTTPException(status_code=400, detail="Session cannot be cancelled or not found")
+
+    return CancelSessionResponse(
+        session_id=session_id,
+        status=SessionStatus.FAILED,
+        message="Session cancelled successfully",
+        cancelled_at=datetime.utcnow()
+    )
+
+@app.delete("/api/v1/qa/sessions/{session_id}")
+async def delete_qa_session(session_id: str):
+    """Delete a Q&A session permanently"""
+    success = qa_session_storage.delete_session(session_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    return {"message": f"Session {session_id} deleted successfully"}
+
+@app.post("/api/v1/qa/sessions/{session_id}/regenerate-summary", response_model=SessionSummary)
+async def regenerate_session_summary(session_id: str, request: RegenerateSummaryRequest):
+    """Regenerate the AI summary for a completed session"""
+    session = qa_session_storage.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    if session.status != SessionStatus.COMPLETED:
+        raise HTTPException(status_code=400, detail="Session must be completed to regenerate summary")
+
+    # Regenerate summary
+    summary = await qa_service._generate_summary(session_id, session.responses)
+    qa_session_storage.add_summary(session_id, summary)
+
+    return summary
+
+@app.get("/api/v1/qa/sessions/{session_id}/stream")
+async def stream_session_updates(session_id: str):
+    """Server-Sent Events endpoint for real-time session updates"""
+    async def event_generator():
+        last_check = datetime.utcnow()
+
+        while True:
+            session = qa_session_storage.get_session(session_id)
+            if not session:
+                yield f"event: error\ndata: Session not found\n\n"
+                break
+
+            # Check for new responses
+            new_responses = qa_session_storage.get_responses(session_id, last_check)
+
+            for response in new_responses:
+                notification = ResponseUpdateNotification(
+                    event_type="response_received",
+                    session_id=session_id,
+                    timestamp=datetime.utcnow(),
+                    new_response=response,
+                    progress={
+                        "responded": session.total_responded,
+                        "total": session.total_expected
+                    }
+                )
+                yield f"event: response_received\ndata: {notification.model_dump_json()}\n\n"
+
+            # Check if session completed
+            if session.status == SessionStatus.COMPLETED:
+                notification = ResponseUpdateNotification(
+                    event_type="session_completed",
+                    session_id=session_id,
+                    timestamp=datetime.utcnow(),
+                    summary=session.summary,
+                    progress={
+                        "responded": session.total_responded,
+                        "total": session.total_expected
+                    }
+                )
+                yield f"event: session_completed\ndata: {notification.model_dump_json()}\n\n"
+                break
+
+            # Check if session failed
+            if session.status == SessionStatus.FAILED:
+                notification = ResponseUpdateNotification(
+                    event_type="session_failed",
+                    session_id=session_id,
+                    timestamp=datetime.utcnow(),
+                    data={"error": session.error_message}
+                )
+                yield f"event: session_failed\ndata: {notification.model_dump_json()}\n\n"
+                break
+
+            last_check = datetime.utcnow()
+            await asyncio.sleep(2)  # Poll every 2 seconds
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*",
+        }
+    )
+
 class RealtimeSessionRequest(BaseModel):
     persona_id: str | None = None
 
@@ -376,9 +568,8 @@ class RealtimeSessionResponse(BaseModel):
     session_id: str
     client_secret: str
     expires_at: datetime
-# ...existing code...
 
-# REMOVE the old Flask-style endpoint and add this FastAPI one:
+# Voice chat endpoint
 @app.post("/realtime/session", response_model=RealtimeSessionResponse)
 async def issue_session(payload: RealtimeSessionRequest):
 
