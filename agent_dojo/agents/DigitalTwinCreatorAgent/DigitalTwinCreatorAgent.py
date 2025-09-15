@@ -37,9 +37,9 @@ from utils.async_helper import run_async
 
 TEST_SET="lead_personas_dataset_v6_10records_detailed_existing.csv"
 
-reflection_model=dspy.LM(model="openai/gpt-4.1-mini", temperature=1.0, max_tokens=32000)
-model_for_optimization=dspy.LM('openai/gpt-4.1-mini',temperature=1.0, max_tokens=16000)
-model_for_execution=dspy.LM('openai/gpt-4.1-mini',temperature=1.0, max_tokens=16000)
+reflection_model=dspy.LM(model="azure/gpt-4.1-mini", temperature=1.0, max_tokens=32000)
+model_for_optimization=dspy.LM('azure/gpt-4.1-mini',temperature=1.0, max_tokens=16000)
+model_for_execution=dspy.LM('azure/gpt-4.1-mini',temperature=1.0, max_tokens=16000)
 
 
 class ExtractDigitalTwinSig(dspy.Signature):

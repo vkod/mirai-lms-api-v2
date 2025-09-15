@@ -16,7 +16,7 @@ class QAService:
     def __init__(self):
         self.session_storage = QASessionStorage()
         self.digital_twin_storage = ScalableDigitalTwinStorage()
-        self.llm = dspy.LM('azure/gpt-4o')
+        self.llm = dspy.LM('azure/gpt-4.1-mini')
 
     async def submit_question(self, request: QuestionSubmitRequest) -> QuestionSubmitResponse:
         """Submit a question to selected prospects"""
