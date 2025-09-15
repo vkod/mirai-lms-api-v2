@@ -30,7 +30,5 @@ nest-asyncio
 # Voice Chat and WebRTC dependencies
 openai>=1.0.0
 numpy
-wave
-aiortc  # For advanced WebRTC support (optional)
 
 
