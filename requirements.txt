@@ -24,11 +24,8 @@ Pillow
 # Environment variables
 python-dotenv
 
-# Async utilities
-nest-asyncio
 
 # Voice Chat and WebRTC dependencies
 openai>=1.0.0
-numpy
 
 
