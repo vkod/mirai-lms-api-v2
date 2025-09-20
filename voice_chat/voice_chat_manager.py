@@ -23,7 +23,7 @@ class CreatedSession:
     expires_at: int
 
 
-def create_realtime_session(persona: Optional[str] = None, markdown: Optional[str] = None, gender: Optional[str] = None) -> CreatedSession:
+def create_realtime_session(instructions: Optional[str] = None, markdown: Optional[str] = None, gender: Optional[str] = None) -> CreatedSession:
     """
     Server creates a Realtime session and receives a client_secret the browser can use
     to establish WebRTC to the OpenAI Realtime service.
@@ -35,48 +35,11 @@ def create_realtime_session(persona: Optional[str] = None, markdown: Optional[st
     if gender and gender.lower() == "male":
         voice_selection = MALE_VOICE
 
-    INS=f""""
-    YOU ARE AN INSURANCE CUSTOMER.
-
-# Core Instructions
-<core_capabilities>
-YOU ARE AN INSURANCE CUSTOMER. You should assume the personality provided below:
-{persona}
-Provide answers based on your personality and also the data provided below.
-</core_capabilities>
-
-<agent_background>
-{markdown}
-</agent_background>
-
-<user_information>
-User will be Insurance Agent trying to help you with your Insurance needs.
-</user_information>
-
-<voice_capabilities>
-- Providing answer based on your personality and background
-- Keeping your responses brief and only about the question asked
-- ALWAYS RESPOND IN ENGLISH
-</voice_capabilities>
-
-<communication_preferences>
-- Match this communication style and tone:
-Keep it formal and concise.
-</communication_preferences>
-
-<voice_interaction_guidelines>
-- Speak in short, conversational sentences (one or two per reply)
-- Use simple words; avoid jargon unless the user uses it first
-- Never use lists, markdown, or code blocks—just speak naturally
-- If a request is ambiguous, ask a brief clarifying question instead of guessing
-</voice_interaction_guidelines>
-"""    
-
     payload = {
         "model": REALTIME_MODEL,
         "voice": voice_selection,
         "modalities": ["audio", "text"],  # speech-in/speech-out; adjust as needed
-        "instructions": INS,
+        "instructions": instructions or "You are an Insurance Customer.",
         "turn_detection": {"type": "server_vad"}
     }
     headers = {

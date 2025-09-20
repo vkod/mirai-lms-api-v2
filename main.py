@@ -8,6 +8,7 @@ from agent_dojo.agents.DigitalTwinCreatorAgent import DigitalTwinCreatorAgent
 from agent_dojo.agent_management import get_agents_list, get_agent
 from agent_dojo.agents.PersonaImageGenerationAgent import PersonaImageGenerationAgent
 from agent_dojo.agents.SyntheticPersonChatAgent import SyntheticPersonChatAgent
+from agent_dojo.agents.SyntheticPersonChatAgent.SyntheticPersonChatAgent import get_instructions_for_persona
 from agent_dojo.agents.SurveyResponseAgent import SurveyResponseAgent
 from storage.persona_image_storage import PersonaImageStorage
 from storage.digital_twin_storage import ScalableDigitalTwinStorage
@@ -579,7 +580,7 @@ async def issue_session(payload: RealtimeSessionRequest):
         persona_data = await get_synthetic_persona(payload.persona_id)
         if persona_data:
             persona = persona_data.persona_summary
-            created = create_realtime_session(persona=persona, markdown=persona_data.markdown, gender=persona_data.gender)
+            created = create_realtime_session(instructions=get_instructions_for_persona(persona), markdown=persona_data.markdown, gender=persona_data.gender)
             return RealtimeSessionResponse(
                 session_id=created.id,
                 client_secret=created.client_secret,
