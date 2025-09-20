@@ -23,15 +23,16 @@ class SyntheticPersonaChatSig(dspy.Signature):
     persona:str = dspy.InputField()
     history: dspy.History = dspy.InputField()
     question:str = dspy.InputField()
-    answer: str = dspy.OutputField(desc="normal response like a human")
+    language:str = dspy.InputField()
+    answer: str = dspy.OutputField(desc=f"normal response like a human in {language}")
 
 class SyntheticPersonChatAgent(dspy.Module):
     def __init__(self):
         super().__init__()
         self.answer_question = dspy.ChainOfThought(SyntheticPersonaChatSig)
 
-    def forward(self, question,history, persona) -> Any:
-        answer = self.answer_question(question=question,history=history, persona=persona)
+    def forward(self, question,history, persona,language) -> Any:
+        answer = self.answer_question(question=question,history=history, persona=persona, language=language)
         return dspy.Prediction(answer=answer.answer)
 
 class PersonaToInstructionsSig(dspy.Signature):
@@ -134,7 +135,7 @@ def optimize_using_gepa():
         log_lm_execution_cost(model_for_optimization,"optimize_using_gepa_metrics")
         log_lm_execution_cost(reflection_model,"optimize_using_gepa_reflection")
 
-def run(question, history, persona=""):
+def run(question, history, persona="",language="en-US") -> str:
     agent = SyntheticPersonChatAgent()
     optimized_program_file_dir = get_optimized_program_file_directory(__file__)
     optimized_program_file = os.path.join(optimized_program_file_dir, 'SyntheticPersonChatAgent_Optimized')
@@ -147,7 +148,7 @@ def run(question, history, persona=""):
     lm=model_for_execution
     try:
         with dspy.context(lm=lm):
-            output = agent(question=question, history=history, persona=persona)
+            output = agent(question=question, history=history, persona=persona,language=language)
             #print(output.get_lm_usage())
             log_lm_execution_cost(lm,"SyntheticPersonChatAgent_run")
         return output.answer

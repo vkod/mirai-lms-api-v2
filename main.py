@@ -29,6 +29,7 @@ import asyncio
 from flask import  jsonify, request, abort
 from datetime import datetime
 import secrets
+from typing import Literal
 
 # Initialize storage instances
 persona_image_storage = PersonaImageStorage()
@@ -56,6 +57,7 @@ from fastapi.responses import StreamingResponse
 class QuestionPayload(BaseModel):
     question: str
     persona: str = None
+    response_language: Literal["en-US", "ja"] = "en-US"
 
 class DigitalTwinInputPayload(BaseModel):
     data: str
@@ -562,8 +564,12 @@ async def stream_session_updates(session_id: str):
         }
     )
 
+from typing import Optional, Union
+from typing import Literal
+
 class RealtimeSessionRequest(BaseModel):
-    persona_id: str | None = None
+    persona_id: Optional[str] = None
+    language: Literal["en-US", "ja"] = "en-US"
 
 class RealtimeSessionResponse(BaseModel):
     session_id: str
@@ -580,7 +586,7 @@ async def issue_session(payload: RealtimeSessionRequest):
         persona_data = await get_synthetic_persona(payload.persona_id)
         if persona_data:
             persona = persona_data.persona_summary
-            created = create_realtime_session(instructions=get_instructions_for_persona(persona), markdown=persona_data.markdown, gender=persona_data.gender)
+            created = create_realtime_session(instructions=get_instructions_for_persona(persona,payload.language), markdown=persona_data.markdown, gender=persona_data.gender)
             return RealtimeSessionResponse(
                 session_id=created.id,
                 client_secret=created.client_secret,
