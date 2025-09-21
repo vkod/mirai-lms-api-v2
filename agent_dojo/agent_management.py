@@ -54,7 +54,7 @@ digital_twin_sample_data_2="""{"user_id": "U316", "session_id": "S316", "page_vi
 def get_agents_list() -> List[Agent]:
     digitalTwinAgent = Agent(
         id= "digital_twin_agent",
-        name="Digital Twin Agent",
+        name="Digital Twin Creation Agent",
         version="1.0",
         goal="""Create an imaginary persona based on data provided and update the digital twin with data as much as possible.If existing_digital_twin information is provided, update it with new or changed information based on clear signals in data""",
         inputs=[
@@ -63,7 +63,7 @@ def get_agents_list() -> List[Agent]:
         ],
         outputs=[AgentOutputType(output_desc="Updated/New Digital twin", output_type="markdown", name="digital_twin"),
                  AgentOutputType(output_desc="Execution cost", output_type="label", name="execution_cost")],
-        metrics={"Data processed": 100, "Digital twins created": 78, "Digital twins updated": 23, "Cost this month": "$100"},
+        metrics={"Data processed": 100, "Digital twins created": 78, "Digital twins updated": 23, "Cost this month": "100"},
         endpoint_for_testing="test_digital_twin_agent",
         
     )
@@ -75,16 +75,16 @@ def get_agents_list() -> List[Agent]:
         version="1.0",
         goal="Generate image of digital twin based on persona",
         inputs=[
-            AgentInputType(input_desc="Digital Twin profile", input_type="textarea", name="persona")
+            AgentInputType(input_desc="Digital Twin profile", input_type="textarea", name="persona", sample_data=[persona_chat_agent_sample_data_2])
         ],
         outputs=[AgentOutputType(output_desc="Generated image", output_type="image_id", name="generated_image_id"),
                  AgentOutputType(output_desc="Execution cost", output_type="label", name="execution_cost")],
-        metrics={"Photos generated": 34, "Cost this month": "$50"},
+        metrics={"Photos generated": 34, "Cost this month": "50"},
         endpoint_for_testing="test_lead_image_generation_agent"
     )
     syntheticPersonChatAgent = Agent(
         id= "synthetic_person_chat_agent",
-        name="Prospect Digital Twin Agent",
+        name="Lead Digital Twin Agent",
         version="1.0",
         goal="Assumes persona of the 'persona' provided. Answer insurance agent's questions.",
         inputs=[
@@ -95,8 +95,23 @@ def get_agents_list() -> List[Agent]:
         metrics={"Questions answered": 150,  "Cost this month": "$10"},
         endpoint_for_testing="test_synthetic_person_chat_agent"
     )
+
+    lead_nurturing_agent = Agent(
+    id= "lead_nurturing_agent",
+    name="Lead Nurturing Agent (Coming soon)",
+    version="1.0",
+    goal="Keep leads warm by planning personalized digital campaigns based on digital twin insights.",
+    inputs=[
+        AgentInputType(input_desc="Persona profile", input_type="textarea", name="persona", sample_data=[])
+    ],
+    outputs=[AgentOutputType(output_desc="Interaction plan", output_type="label", name="interaction_plan")],
+    metrics={},
+    endpoint_for_testing=""
+    )
+    
+    
      #Return list of agents
-    return [digitalTwinAgent,leadImageGenerationAgent, syntheticPersonChatAgent]
+    return [digitalTwinAgent,leadImageGenerationAgent, syntheticPersonChatAgent,lead_nurturing_agent]
 
 
 def get_agent(id: str) -> Agent:
