@@ -79,3 +79,5 @@ Response: {"message": "Session QS-ABC123 deleted successfully"}
 3. Subscribe to SSE for updates
 4. Show responses as they arrive
 5. Display summary when complete
+
+6. 
